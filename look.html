@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Look Detail | HTML 7277</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #f6f6f6;
+    }
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+    .menu-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 100;
+      background: transparent !important;
+      box-shadow: none;
+      border: none;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .menu-header .logo img {
+      height: 16px;
+      vertical-align: middle;
+    }
+    .main-nav-top {
+      display: flex;
+      align-items: center;
+    }
+    .main-nav-top a,
+    .dropdown-toggle {
+      font-size: 11px;
+      text-decoration: none;
+      color: #000;
+      margin-left: 32px;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      padding: 2px 0;
+      display: flex;
+      align-items: center;
+      transition: color 0.3s;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      align-items: center;
+      margin-left: 32px;
+    }
+    .dropdown-toggle-text {
+      position: relative;
+      padding: 2px 0;
+      margin: 0;
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: -15px;
+      min-width: 120px;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 6px 16px;
+      font-size: 11px;
+      color: #000;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.3s;
+    }
+    .dropdown-menu a:hover {
+      opacity: 0.6;
+    }
+    main {
+      display: flex;
+      width: 100vw;
+      min-height: 100vh;
+      margin-top: 0;
+      background: #f6f6f6;
+    }
+    .look-images-scroll {
+      width: auto;
+      height: calc(100vh - 64px);
+      overflow-y: visible;
+      background: #f6f6f6;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: flex-start;
+      scroll-behavior: smooth;
+      margin-left: 32px;
+      margin-top: 64px;
+      padding: 0;
+    }
+    .look-thumbnails {
+      width: 72px;
+      min-width: 72px;
+      background: #f6f6f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0;
+      gap: 12px;
+      box-sizing: border-box;
+      margin-top: 48px;
+      margin-left: 0;
+      margin-right: 16px;
+      height: calc(100vh - 64px);
+    }
+    .look-thumbnails img {
+      width: 64px;
+      height: 86px;
+      object-fit: cover;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s, box-shadow 0.2s;
+      box-shadow: none;
+      border: 2px solid transparent;
+      loading: lazy;
+    }
+    .look-thumbnails img.active {
+      opacity: 1;
+      border: 2px solid #222;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    #lookGallery {
+      width: auto;
+      max-width: 60vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      height: calc(100vh - 64px);
+      margin: 0;
+      padding: 0;
+      margin-left: 32px;
+    }
+    #lookGallery img {
+      width: auto;
+      max-width: 100%;
+      height: calc(100vh - 64px);
+      object-fit: contain;
+      display: block;
+      background: #f6f6f6;
+      margin: 0 auto;
+      box-shadow: none;
+      border-radius: 0;
+      scroll-snap-align: start;
+      transition: box-shadow 0.2s;
+      loading: lazy;
+    }
+    .look-desc {
+      position: static;
+      padding-left: 105px;
+      margin-top: 37.5vh;
+    }
+    .look-desc h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+      color: #222;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      text-align: left;
+    }
+    .look-desc p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #222;
+      margin-bottom: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      text-align: left;
+    }
+    .site-footer-minimal {
+      position: static;
+      width: 100vw;
+      background: #f6f6f6;
+      margin: 0;
+      z-index: 10;
+      box-shadow: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 68px;
+      margin-top: 0 !important;
+    }
+    .footer-minimal-container {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 68px;
+      color: #222;
+      font-size: 1em;
+      background: none;
+      pointer-events: auto;
+      box-shadow: none;
+      border: none;
+    }
+    .footer-minimal-center {
+      font-size: 11px;
+      color: #222;
+      letter-spacing: 0.08em;
+      text-align: center;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        margin-top: 0;
+      }
+      .look-images-scroll {
+        width: 100vw;
+        height: 60vw;
+        max-height: 80vh;
+        margin-top: 0;
+      }
+      #lookGallery img {
+        height: 60vw;
+        max-height: 80vh;
+      }
+      .look-desc {
+        width: 100vw;
+        padding: 32px 16px 0 16px;
+        min-height: auto;
+      }
+    }
+    @media (max-width: 768px) {
+      .menu-header {
+        padding: 16px 20px;
+      }
+      .menu-header .logo img {
+        height: 14px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 10px;
+        margin-left: 20px;
+      }
+      .look-thumbnails {
+        width: 60px;
+        min-width: 60px;
+        padding: 12px 0;
+        gap: 8px;
+        margin-right: 12px;
+      }
+      .look-thumbnails img {
+        width: 52px;
+        height: 70px;
+      }
+      .look-images-scroll {
+        margin-left: 20px;
+      }
+      #lookGallery {
+        margin-left: 20px;
+      }
+      .look-desc {
+        padding-left: 80px;
+        margin-top: 20vh;
+      }
+      .look-desc h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .look-desc p {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+    }
+    @media (max-width: 600px) {
+      .menu-header {
+        padding: 12px 16px;
+      }
+      .menu-header .logo img {
+        height: 12px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 9px;
+        margin-left: 16px;
+      }
+      .look-thumbnails {
+        width: 50px;
+        min-width: 50px;
+        padding: 8px 0;
+        gap: 6px;
+        margin-right: 8px;
+      }
+      .look-thumbnails img {
+        width: 44px;
+        height: 60px;
+      }
+      .look-images-scroll {
+        margin-left: 16px;
+      }
+      #lookGallery {
+        margin-left: 16px;
+      }
+      .look-desc {
+        padding-left: 70px;
+        margin-top: 15vh;
+      }
+      .look-desc h2 {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .look-desc p {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .site-footer-minimal, .footer-minimal-container {
+        height: 48px;
+      }
+      .footer-minimal-center {
+        font-size: 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .menu-header {
+        padding: 10px 12px;
+      }
+      .menu-header .logo img {
+        height: 10px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 8px;
+        margin-left: 12px;
+      }
+      .look-thumbnails {
+        width: 40px;
+        min-width: 40px;
+        padding: 6px 0;
+        gap: 4px;
+        margin-right: 6px;
+      }
+      .look-thumbnails img {
+        width: 36px;
+        height: 48px;
+      }
+      .look-images-scroll {
+        margin-left: 12px;
+      }
+      #lookGallery {
+        margin-left: 12px;
+      }
+      .look-desc {
+        padding-left: 60px;
+        margin-top: 10vh;
+      }
+      .look-desc h2 {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+      .look-desc p {
+        font-size: 11px;
+        line-height: 1.4;
+      }
+    }
+    /* iPhone 16 기준 최적화 */
+    @media (max-width: 1179px) {
+      .menu-header {
+        padding: 12px 16px;
+      }
+      .menu-header .logo img {
+        height: 14px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 10px;
+        margin-left: 16px;
+      }
+      .look-thumbnails {
+        width: 50px;
+        min-width: 50px;
+        padding: 8px 0;
+        gap: 6px;
+        margin-right: 8px;
+      }
+      .look-thumbnails img {
+        width: 44px;
+        height: 60px;
+      }
+      .look-images-scroll {
+        margin-left: 12px;
+      }
+      #lookGallery {
+        margin-left: 12px;
+      }
+      .look-desc {
+        padding-left: 70px;
+        margin-top: 15vh;
+      }
+      .look-desc h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      .look-desc p {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .site-footer-minimal, .footer-minimal-container {
+        height: 48px;
+      }
+      .footer-minimal-center {
+        font-size: 10px;
+      }
+      .look-thumbnails img,
+      #lookGallery img {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      
+      .look-thumbnails img {
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      #lookGallery {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+      
+      .image-modal {
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .close-modal {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+    }
+    .look-images-scroll,
+    #lookGallery,
+    #lookGallery img {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    /* 이미지 모달 스타일 */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f6f6f6;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .image-modal.show {
+      opacity: 1;
+    }
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 85%;
+      max-height: 85%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #000;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      transition: opacity 0.3s;
+    }
+    .close-modal:hover {
+      opacity: 0.7;
+    }
+    /* 이미지 클릭 가능 표시 */
+    #lookGallery img {
+      cursor: pointer;
+    }
+    /* #lookGallery img:hover {
+      opacity: 0.9;
+    } */
+  </style>
+</head>
+<body>
+  <header class="menu-header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo/HTML MAIN LOGO.png" alt="HTML 7277 Logo" />
+      </a>
+    </div>
+    <nav class="main-nav-top">
+      <div class="dropdown">
+        <span class="dropdown-toggle dropdown-toggle-text">COLLECTION</span>
+        <div class="dropdown-menu">
+          <a href="25.2.html">25.2</a>
+        </div>
+      </div>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+  <main>
+    <div class="look-images-scroll">
+      <div class="look-thumbnails" id="lookThumbnails"></div>
+      <div id="lookGallery"></div>
+    </div>
+    <div class="look-desc">
+      <div id="lookDescBox"></div>
+    </div>
+  </main>
+  <footer class="site-footer-minimal">
+    <div class="footer-minimal-container">
+      <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
+    </div>
+  </footer>
+  
+  <!-- 이미지 모달 -->
+  <div id="imageModal" class="image-modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="확대된 이미지">
+    </div>
+  </div>
+  
+  <script>
+    const lookData = {
+      1: {
+        images: [
+          "images/25.2 looks/Look 1-1.jpg",
+          "images/25.2 looks/Look 1-2.jpg",
+          "images/25.2 looks/Look 1-3.jpg"
+        ],
+        title: "LOOK 1",
+        description: "This is the description for Look 1. Unique, minimal, and modern."
+      },
+      2: {
+        images: [
+          "images/25.2 looks/Look 2-1.jpg",
+          "images/25.2 looks/Look 2-2.jpg",
+          "images/25.2 looks/Look 2-3.jpg"
+        ],
+        title: "LOOK 2",
+        description: "This is the description for Look 2. Futuristic and bold."
+      },
+      3: {
+        images: [
+          "images/25.2 looks/Look 3-1.jpg",
+          "images/25.2 looks/Look 3-2.jpg",
+          "images/25.2 looks/Look 3-3.jpg"
+        ],
+        title: "LOOK 3",
+        description: "This is the description for Look 3."
+      },
+      4: {
+        images: [
+          "images/25.2 looks/Look 4-1.jpg",
+          "images/25.2 looks/Look 4-2.jpg",
+          "images/25.2 looks/Look 4-3.jpg"
+        ],
+        title: "LOOK 4",
+        description: "This is the description for Look 4."
+      },
+      5: {
+        images: [
+          "images/25.2 looks/Look 5-1.jpg",
+          "images/25.2 looks/Look 5-2.jpg",
+          "images/25.2 looks/Look 5-3.jpg"
+        ],
+        title: "LOOK 5",
+        description: "This is the description for Look 5."
+      },
+      6: {
+        images: [
+          "images/25.2 looks/Look 6-1.jpg",
+          "images/25.2 looks/Look 6-2.jpg",
+          "images/25.2 looks/Look 6-3.jpg"
+        ],
+        title: "LOOK 6",
+        description: "This is the description for Look 6."
+      },
+      7: {
+        images: [
+          "images/25.2 looks/Look 7-1.jpg",
+          "images/25.2 looks/Look 7-2.jpg",
+          "images/25.2 looks/Look 7-3.jpg"
+        ],
+        title: "LOOK 7",
+        description: "This is the description for Look 7."
+      },
+      8: {
+        images: [
+          "images/25.2 looks/Look 8-1.jpg",
+          "images/25.2 looks/Look 8-2.jpg",
+          "images/25.2 looks/Look 8-3.jpg"
+        ],
+        title: "LOOK 8",
+        description: "This is the description for Look 8."
+      },
+      9: {
+        images: [
+          "images/25.2 looks/Look 9-1.jpg",
+          "images/25.2 looks/Look 9-2.jpg",
+          "images/25.2 looks/Look 9-3.jpg"
+        ],
+        title: "LOOK 9",
+        description: "This is the description for Look 9."
+      },
+      10: {
+        images: [
+          "images/25.2 looks/Look 10-1.jpg",
+          "images/25.2 looks/Look 10-2.jpg",
+          "images/25.2 looks/Look 10-3.jpg"
+        ],
+        title: "LOOK 10",
+        description: "This is the description for Look 10."
+      },
+      11: {
+        images: [
+          "images/25.2 looks/Look 11-1.jpg",
+          "images/25.2 looks/Look 11-2.jpg",
+          "images/25.2 looks/Look 11-3.jpg"
+        ],
+        title: "LOOK 11",
+        description: "This is the description for Look 11."
+      },
+      12: {
+        images: [
+          "images/25.2 looks/Look 12-1.jpg",
+          "images/25.2 looks/Look 12-2.jpg",
+          "images/25.2 looks/Look 12-3.jpg"
+        ],
+        title: "LOOK 12",
+        description: "This is the description for Look 12."
+      },
+      13: {
+        images: [
+          "images/25.2 looks/Look 13-1.jpg",
+          "images/25.2 looks/Look 13-2.jpg",
+          "images/25.2 looks/Look 13-3.jpg"
+        ],
+        title: "LOOK 13",
+        description: "This is the description for Look 13."
+      },
+      14: {
+        images: [
+          "images/25.2 looks/Look 14-1.jpg",
+          "images/25.2 looks/Look 14-2.jpg",
+          "images/25.2 looks/Look 14-3.jpg"
+        ],
+        title: "LOOK 14",
+        description: "This is the description for Look 14."
+      },
+      15: {
+        images: [
+          "images/25.2 looks/Look 15-1.jpg",
+          "images/25.2 looks/Look 15-2.jpg",
+          "images/25.2 looks/Look 15-3.jpg"
+        ],
+        title: "LOOK 15",
+        description: "This is the description for Look 15."
+      },
+      16: {
+        images: [
+          "images/25.2 looks/Look 16-1.jpg",
+          "images/25.2 looks/Look 16-2.jpg",
+          "images/25.2 looks/Look 16-3.jpg"
+        ],
+        title: "LOOK 16",
+        description: "This is the description for Look 16."
+      },
+      17: {
+        images: [
+          "images/25.2 looks/Look 17-1.jpg",
+          "images/25.2 looks/Look 17-2.jpg",
+          "images/25.2 looks/Look 17-3.jpg"
+        ],
+        title: "LOOK 17",
+        description: "This is the description for Look 17."
+      },
+      18: {
+        images: [
+          "images/25.2 looks/Look 18-1.jpg",
+          "images/25.2 looks/Look 18-2.jpg",
+          "images/25.2 looks/Look 18-3.jpg"
+        ],
+        title: "LOOK 18",
+        description: "This is the description for Look 18."
+      },
+      19: {
+        images: [
+          "images/25.2 looks/Look 19-1.jpg",
+          "images/25.2 looks/Look 19-2.jpg",
+          "images/25.2 looks/Look 19-3.jpg"
+        ],
+        title: "LOOK 19",
+        description: "This is the description for Look 19."
+      },
+      20: {
+        images: [
+          "images/25.2 looks/Look 20-1.jpg",
+          "images/25.2 looks/Look 20-2.jpg",
+          "images/25.2 looks/Look 20-3.jpg"
+        ],
+        title: "LOOK 20",
+        description: "This is the description for Look 20."
+      },
+      21: {
+        images: [
+          "images/25.2 looks/Look 21-1.jpg",
+          "images/25.2 looks/Look 21-2.jpg",
+          "images/25.2 looks/Look 21-3.jpg"
+        ],
+        title: "LOOK 21",
+        description: "This is the description for Look 21."
+      },
+      22: {
+        images: [
+          "images/25.2 looks/Look 22-1.jpg",
+          "images/25.2 looks/Look 22-2.jpg",
+          "images/25.2 looks/Look 22-3.jpg"
+        ],
+        title: "LOOK 22",
+        description: "This is the description for Look 22."
+      },
+      23: {
+        images: [
+          "images/25.2 looks/Look 23-1.jpg",
+          "images/25.2 looks/Look 23-2.jpg",
+          "images/25.2 looks/Look 23-3.jpg"
+        ],
+        title: "LOOK 23",
+        description: "This is the description for Look 23."
+      },
+      24: {
+        images: [
+          "images/25.2 looks/Look 24-1.jpg",
+          "images/25.2 looks/Look 24-2.jpg",
+          "images/25.2 looks/Look 24-3.jpg"
+        ],
+        title: "LOOK 24",
+        description: "This is the description for Look 24."
+      },
+      25: {
+        images: [
+          "images/25.2 looks/Look 25-1.jpg",
+          "images/25.2 looks/Look 25-2.jpg",
+          "images/25.2 looks/Look 25-3.jpg"
+        ],
+        title: "LOOK 25",
+        description: "This is the description for Look 25."
+      }
+    };
+    function renderLook() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const look = lookData[id];
+      const gallery = document.getElementById('lookGallery');
+      const thumbnails = document.getElementById('lookThumbnails');
+      const descBox = document.getElementById('lookDescBox');
+      if (!look) {
+        gallery.innerHTML = '<p>Look not found.</p>';
+        thumbnails.innerHTML = '';
+        descBox.innerHTML = '';
+        return;
+      }
+      gallery.innerHTML = look.images.map((src, i) => `<img src="${src}" alt="${look.title}" data-index="${i}" loading="lazy">`).join('');
+      thumbnails.innerHTML = look.images.map((src, i) => `<img src="${src}" alt="${look.title} thumbnail" data-index="${i}" loading="lazy">`).join('');
+      descBox.innerHTML = `<h2>${look.title}</h2><p>${look.description}</p>`;
+      
+      // 썸네일 클릭 이벤트
+      const galleryImgs = gallery.querySelectorAll('img');
+      const thumbImgs = thumbnails.querySelectorAll('img');
+      thumbImgs.forEach((thumb, idx) => {
+        thumb.addEventListener('click', () => {
+          // 모바일에서는 헤더 높이를 동적으로 계산
+          const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
+          gallery.scrollTo({
+            top: galleryImgs[idx].offsetTop - headerHeight,
+            behavior: 'smooth'
+          });
+        });
+        
+        // 터치 이벤트 추가 (모바일용)
+        thumb.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
+          gallery.scrollTo({
+            top: galleryImgs[idx].offsetTop - headerHeight,
+            behavior: 'smooth'
+          });
+        });
+      });
+      
+      // 이미지 클릭 시 모달 열기
+      galleryImgs.forEach((img) => {
+        img.addEventListener('click', () => {
+          openModal(img.src);
+        });
+        
+        // 터치 이벤트 추가 (모바일용)
+        img.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          openModal(img.src);
+        });
+      });
+      
+      // 스크롤 시 썸네일 active (모바일 최적화)
+      gallery.addEventListener('scroll', () => {
+        let found = 0;
+        const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
+        galleryImgs.forEach((img, idx) => {
+          const rect = img.getBoundingClientRect();
+          // 모바일에서는 더 정확한 위치 계산
+          if (rect.top < (window.innerHeight / 2) + headerHeight) found = idx;
+        });
+        thumbImgs.forEach(t => t.classList.remove('active'));
+        if (thumbImgs[found]) thumbImgs[found].classList.add('active');
+      });
+    }
+    
+    // 모달 관련 함수들
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = imageSrc;
+      modal.style.display = 'block';
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 10);
+    }
+    
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('show');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+    }
+    
+    // 모달 닫기 이벤트
+    document.querySelector('.close-modal').addEventListener('click', closeModal);
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+    
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    renderLook();
+  </script>
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accessory Detail | HTML 7277</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #f6f6f6;
+    }
+    body {
+      min-height: 100vh;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+    .menu-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 100;
+      background: transparent !important;
+      box-shadow: none;
+      border: none;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .menu-header .logo img {
+      height: 16px;
+      vertical-align: middle;
+    }
+    .main-nav-top {
+      display: flex;
+      align-items: center;
+    }
+    .main-nav-top a,
+    .dropdown-toggle {
+      font-size: 11px;
+      text-decoration: none;
+      color: #000;
+      margin-left: 32px;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      padding: 2px 0;
+      display: flex;
+      align-items: center;
+      transition: color 0.3s;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      align-items: center;
+      margin-left: 32px;
+    }
+    .dropdown-toggle-text {
+      position: relative;
+      padding: 2px 0;
+      margin: 0;
+    }
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: -15px;
+      min-width: 120px;
+    }
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 6px 16px;
+      font-size: 11px;
+      color: #000;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.3s;
+    }
+    .dropdown-menu a:hover {
+      opacity: 0.6;
+    }
+    main {
+      display: flex;
+      width: 100vw;
+      min-height: 100vh;
+      margin-top: 0;
+      background: #f6f6f6;
+    }
+    .acc-images-scroll {
+      width: auto;
+      height: calc(100vh - 64px);
+      overflow-y: visible;
+      background: #f6f6f6;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      justify-content: flex-start;
+      scroll-behavior: smooth;
+      margin-left: 32px;
+      margin-top: 64px;
+      padding: 0;
+    }
+    .acc-thumbnails {
+      width: 72px;
+      min-width: 72px;
+      background: #f6f6f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0;
+      gap: 12px;
+      box-sizing: border-box;
+      margin-top: 48px;
+      margin-left: 0;
+      margin-right: 16px;
+      height: calc(100vh - 64px);
+    }
+    .acc-thumbnails img {
+      width: 64px;
+      height: 86px;
+      object-fit: cover;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s, box-shadow 0.2s;
+      box-shadow: none;
+      border: 2px solid transparent;
+    }
+    .acc-thumbnails img.active {
+      opacity: 1;
+      border: 2px solid #222;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    #accGallery {
+      width: auto;
+      max-width: 60vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      height: calc(100vh - 64px);
+      margin: 0;
+      padding: 0;
+      margin-left: 32px;
+    }
+    #accGallery img {
+      width: auto;
+      max-width: 100%;
+      height: calc(100vh - 64px);
+      object-fit: contain;
+      display: block;
+      background: #f6f6f6;
+      margin: 0 auto;
+      box-shadow: none;
+      border-radius: 0;
+      scroll-snap-align: start;
+      transition: box-shadow 0.2s;
+    }
+    .acc-desc {
+      position: static;
+      padding-left: 105px;
+      margin-top: 37.5vh;
+    }
+    .acc-desc h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+      color: #222;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      text-align: left;
+    }
+    .acc-desc p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #222;
+      margin-bottom: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      text-align: left;
+    }
+    .site-footer-minimal {
+      position: static;
+      width: 100vw;
+      background: #f6f6f6;
+      margin: 0;
+      z-index: 10;
+      box-shadow: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 68px;
+      margin-top: 0 !important;
+    }
+    .footer-minimal-container {
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 68px;
+      color: #222;
+      font-size: 1em;
+      background: none;
+      pointer-events: auto;
+      box-shadow: none;
+      border: none;
+    }
+    .footer-minimal-center {
+      font-size: 11px;
+      color: #222;
+      letter-spacing: 0.08em;
+      text-align: center;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 400;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        margin-top: 0;
+      }
+      .acc-images-scroll {
+        width: 100vw;
+        height: 60vw;
+        max-height: 80vh;
+        margin-top: 0;
+      }
+      #accGallery img {
+        height: 60vw;
+        max-height: 80vh;
+      }
+      .acc-desc {
+        width: 100vw;
+        padding: 32px 16px 0 16px;
+        min-height: auto;
+      }
+    }
+    @media (max-width: 768px) {
+      .menu-header {
+        padding: 16px 20px;
+      }
+      .menu-header .logo img {
+        height: 14px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 10px;
+        margin-left: 20px;
+      }
+      .acc-thumbnails {
+        width: 60px;
+        min-width: 60px;
+        padding: 12px 0;
+        gap: 8px;
+        margin-right: 12px;
+      }
+      .acc-thumbnails img {
+        width: 52px;
+        height: 70px;
+      }
+      .acc-images-scroll {
+        margin-left: 20px;
+      }
+      #accGallery {
+        margin-left: 20px;
+      }
+      .acc-desc {
+        padding-left: 80px;
+        margin-top: 20vh;
+      }
+      .acc-desc h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .acc-desc p {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+    }
+    @media (max-width: 600px) {
+      .menu-header {
+        padding: 12px 16px;
+      }
+      .menu-header .logo img {
+        height: 12px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 9px;
+        margin-left: 16px;
+      }
+      .acc-thumbnails {
+        width: 50px;
+        min-width: 50px;
+        padding: 8px 0;
+        gap: 6px;
+        margin-right: 8px;
+      }
+      .acc-thumbnails img {
+        width: 44px;
+        height: 60px;
+      }
+      .acc-images-scroll {
+        margin-left: 16px;
+      }
+      #accGallery {
+        margin-left: 16px;
+      }
+      .acc-desc {
+        padding-left: 70px;
+        margin-top: 15vh;
+      }
+      .acc-desc h2 {
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .acc-desc p {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .site-footer-minimal, .footer-minimal-container {
+        height: 48px;
+      }
+      .footer-minimal-center {
+        font-size: 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .menu-header {
+        padding: 10px 12px;
+      }
+      .menu-header .logo img {
+        height: 10px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 8px;
+        margin-left: 12px;
+      }
+      .acc-thumbnails {
+        width: 40px;
+        min-width: 40px;
+        padding: 6px 0;
+        gap: 4px;
+        margin-right: 6px;
+      }
+      .acc-thumbnails img {
+        width: 36px;
+        height: 48px;
+      }
+      .acc-images-scroll {
+        margin-left: 12px;
+      }
+      #accGallery {
+        margin-left: 12px;
+      }
+      .acc-desc {
+        padding-left: 60px;
+        margin-top: 10vh;
+      }
+      .acc-desc h2 {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+      .acc-desc p {
+        font-size: 11px;
+        line-height: 1.4;
+      }
+    }
+    /* iPhone 16 기준 최적화 */
+    @media (max-width: 1179px) {
+      .menu-header {
+        padding: 12px 16px;
+      }
+      .menu-header .logo img {
+        height: 14px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 10px;
+        margin-left: 16px;
+      }
+      .acc-thumbnails {
+        width: 50px;
+        min-width: 50px;
+        padding: 8px 0;
+        gap: 6px;
+        margin-right: 8px;
+      }
+      .acc-thumbnails img {
+        width: 44px;
+        height: 60px;
+      }
+      .acc-images-scroll {
+        margin-left: 12px;
+      }
+      #accGallery {
+        margin-left: 12px;
+      }
+      .acc-desc {
+        padding-left: 70px;
+        margin-top: 15vh;
+      }
+      .acc-desc h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      .acc-desc p {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .site-footer-minimal, .footer-minimal-container {
+        height: 48px;
+      }
+      .footer-minimal-center {
+        font-size: 10px;
+      }
+      .acc-thumbnails img,
+      #accGallery img {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      
+      .acc-thumbnails img {
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      #accGallery {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+      
+      .image-modal {
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .close-modal {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+    }
+    .acc-images-scroll,
+    #accGallery,
+    #accGallery img {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    /* 이미지 모달 스타일 */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #f6f6f6;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .image-modal.show {
+      opacity: 1;
+    }
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 85%;
+      max-height: 85%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #000;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      transition: opacity 0.3s;
+    }
+    .close-modal:hover {
+      opacity: 0.7;
+    }
+    /* 이미지 클릭 가능 표시 */
+    #accGallery img {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header class="menu-header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo/HTML MAIN LOGO.png" alt="HTML 7277 Logo" />
+      </a>
+    </div>
+    <nav class="main-nav-top">
+      <div class="dropdown">
+        <span class="dropdown-toggle dropdown-toggle-text">COLLECTION</span>
+        <div class="dropdown-menu">
+          <a href="25.2.html">25.2</a>
+        </div>
+      </div>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+  <main>
+    <div class="acc-images-scroll">
+      <div class="acc-thumbnails" id="accThumbnails"></div>
+      <div id="accGallery"></div>
+    </div>
+    <div class="acc-desc">
+      <div id="accDescBox"></div>
+    </div>
+  </main>
+  <footer class="site-footer-minimal">
+    <div class="footer-minimal-container">
+      <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
+    </div>
+  </footer>
+  
+  <!-- 이미지 모달 -->
+  <div id="imageModal" class="image-modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="확대된 이미지">
+    </div>
+  </div>
+  
+  <script>
+    const accData = {
+      acc1: {
+        images: [
+          "images/acc/acc1.png"
+        ],
+        title: "HTML Hanger Key Chain",
+        description: "D-ring hanger key chain<br>Smooth calf leather<br>HT252AC001"
+      },
+      acc2: {
+        images: [
+          "images/acc/acc2.png"
+        ],
+        title: "ACC 2",
+        description: "Description for ACC 2."
+      },
+      acc3: {
+        images: [
+          "images/acc/acc3.png"
+        ],
+        title: "ACC 3",
+        description: "Description for ACC 3."
+      },
+      acc4: {
+        images: [
+          "images/acc/acc4.png"
+        ],
+        title: "ACC 4",
+        description: "Description for ACC 4."
+      },
+      acc5: {
+        images: [
+          "images/acc/acc5.png"
+        ],
+        title: "ACC 5",
+        description: "Description for ACC 5."
+      },
+      acc6: {
+        images: [
+          "images/acc/acc6.png"
+        ],
+        title: "ACC 6",
+        description: "Description for ACC 6."
+      },
+      acc7: {
+        images: [
+          "images/acc/acc7.png"
+        ],
+        title: "ACC 7",
+        description: "Description for ACC 7."
+      },
+      acc8: {
+        images: [
+          "images/acc/acc8.png"
+        ],
+        title: "ACC 8",
+        description: "Description for ACC 8."
+      },
+      acc9: {
+        images: [
+          "images/acc/acc9.png"
+        ],
+        title: "ACC 9",
+        description: "Description for ACC 9."
+      },
+      acc10: {
+        images: [
+          "images/acc/acc10.png"
+        ],
+        title: "ACC 10",
+        description: "Description for ACC 10."
+      },
+      acc11: {
+        images: [
+          "images/acc/acc11.png"
+        ],
+        title: "ACC 11",
+        description: "Description for ACC 11."
+      },
+      acc12: {
+        images: [
+          "images/acc/acc12.png"
+        ],
+        title: "ACC 12",
+        description: "Description for ACC 12."
+      },
+      acc13: {
+        images: [
+          "images/acc/acc13.png"
+        ],
+        title: "ACC 13",
+        description: "Description for ACC 13."
+      }
+    };
+    function renderAcc() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const acc = accData[id];
+      const gallery = document.getElementById('accGallery');
+      const thumbnails = document.getElementById('accThumbnails');
+      const descBox = document.getElementById('accDescBox');
+      if (!acc) {
+        gallery.innerHTML = '<p>Accessory not found.</p>';
+        thumbnails.innerHTML = '';
+        descBox.innerHTML = '';
+        return;
+      }
+      gallery.innerHTML = acc.images.map((src, i) => `<img src="${src}" alt="${acc.title}" data-index="${i}">`).join('');
+      thumbnails.innerHTML = acc.images.map((src, i) => `<img src="${src}" alt="${acc.title} thumbnail" data-index="${i}">`).join('');
+      descBox.innerHTML = `<h2>${acc.title}</h2><p>${acc.description}</p>`;
+      
+      // 썸네일 클릭 이벤트
+      const galleryImgs = gallery.querySelectorAll('img');
+      const thumbImgs = thumbnails.querySelectorAll('img');
+      thumbImgs.forEach((thumb, idx) => {
+        thumb.addEventListener('click', () => {
+          // 모바일에서는 헤더 높이를 동적으로 계산
+          const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
+          gallery.scrollTo({
+            top: galleryImgs[idx].offsetTop - headerHeight,
+            behavior: 'smooth'
+          });
+        });
+        
+        // 터치 이벤트 추가 (모바일용)
+        thumb.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
+          gallery.scrollTo({
+            top: galleryImgs[idx].offsetTop - headerHeight,
+            behavior: 'smooth'
+          });
+        });
+      });
+      
+      // 이미지 클릭 시 모달 열기
+      galleryImgs.forEach((img) => {
+        img.addEventListener('click', () => {
+          openModal(img.src);
+        });
+        
+        // 터치 이벤트 추가 (모바일용)
+        img.addEventListener('touchend', (e) => {
+          e.preventDefault();
+          openModal(img.src);
+        });
+      });
+      
+      // 스크롤 시 썸네일 active (모바일 최적화)
+      gallery.addEventListener('scroll', () => {
+        let found = 0;
+        const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
+        galleryImgs.forEach((img, idx) => {
+          const rect = img.getBoundingClientRect();
+          // 모바일에서는 더 정확한 위치 계산
+          if (rect.top < (window.innerHeight / 2) + headerHeight) found = idx;
+        });
+        thumbImgs.forEach(t => t.classList.remove('active'));
+        if (thumbImgs[found]) thumbImgs[found].classList.add('active');
+      });
+    }
+    
+    // 모달 관련 함수들
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modalImg.src = imageSrc;
+      modal.style.display = 'block';
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 10);
+    }
+    
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('show');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 300);
+    }
+    
+    // 모달 닫기 이벤트
+    document.querySelector('.close-modal').addEventListener('click', closeModal);
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+    
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    renderAcc();
+  </script>
+</body>
+</html> 

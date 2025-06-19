@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | HTML 7277</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: #f6f6f6;
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-content {
+      flex: 1;
+      padding: 160px 48px 48px 48px;
+    }
+    .site-footer-minimal {
+      width: 100%;
+      background-color: transparent;
+      margin-top: auto;
+    }
+    .menu-header {
+      background-color: transparent !important;
+    }
+    /* iPhone 16 기준 모바일 최적화 */
+    @media (max-width: 1179px) {
+      .menu-header {
+        padding: 12px 16px;
+      }
+      .menu-header .logo img {
+        height: 14px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 10px;
+        margin-left: 16px;
+      }
+      .contact-content {
+        padding: 140px 20px 40px 20px;
+      }
+      .contact-main h1 {
+        font-size: 20px;
+        margin-bottom: 18px;
+      }
+      .contact-main p {
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 14px;
+      }
+      .site-footer-minimal,
+      .footer-minimal-container {
+        height: 48px;
+      }
+      .footer-minimal-center {
+        font-size: 10px;
+      }
+      .footer-minimal-right a {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="menu-header">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo/HTML MAIN LOGO.png" alt="HTML 7277 Logo" /></a>
+    </div>
+    <nav class="main-nav-top">
+      <div class="dropdown">
+        <a href="collection.html" class="dropdown-toggle">COLLECTION</a>
+        <div class="dropdown-menu">
+          <a href="25.2.html">25.2</a>
+        </div>
+      </div>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="contact-main">
+  <h1>Contact</h1>
+  <div class="contact-text">
+    <p>For inquiries, collaborations, or press:</p>
+    <p>Email: <a href="mailto:info@html7277.com">info@html7277.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/html_72_77" target="_blank">@html_72_77</a></p>
+  </div>
+</main>
+
+<footer class="site-footer-minimal">
+  <div class="footer-minimal-container">
+    <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
+    <div class="footer-minimal-right"><a href="#top" id="backToTop">back to top ↑</a></div>
+  </div>
+</footer>
+<script>
+  document.getElementById('backToTop').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accessories | HTML 7277</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .zoom-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .zoom-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    .zoom-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+    .accessories-grid div,
+    .accessories-row div {
+      position: relative;
+    }
+    .caption {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 10px;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: black;
+      background: none;
+      padding: 2px 0;
+    }
+    .accessories-main {
+      background-color: #f6f6f6;
+      padding: 0;
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    .acc-section {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+    }
+    .accessories-row {
+      display: flex;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+    }
+    .accessories-row .half {
+      flex: 1;
+    }
+    .accessories-row img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      background-color: #f6f6f6;
+    }
+    .accessories-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 0;
+      width: 100%;
+      margin: 0;
+      scroll-snap-align: start;
+    }
+    .accessories-grid div {
+      margin: 0;
+      cursor: pointer;
+    }
+    .accessories-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      background-color: #f6f6f6;
+      loading: lazy;
+    }
+    .accessories-row-fullvh {
+      width: 100vw;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 0;
+      gap: 0;
+      margin-bottom: 0 !important;
+    }
+    .accessories-row-fullvh .half {
+      width: 50vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .accessories-row-fullvh img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      background: none;
+      loading: lazy;
+    }
+    .accessories-row-fullvh .caption {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 10px;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: black;
+      background: none;
+      padding: 2px 0;
+      z-index: 1;
+    }
+    .accessories-row-fullvh .half:first-child {
+      background-color: #f6f6f6;
+    }
+    .menu-header {
+      background-color: transparent !important;
+    }
+    .site-footer-minimal {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      background: transparent;
+      z-index: 1000;
+      padding: 0;
+      pointer-events: none;
+      margin: 0;
+      height: 68px;
+    }
+    .footer-minimal-container {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      height: 68px;
+    }
+    .footer-minimal-center,
+    .footer-minimal-right a {
+      color: #222;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+    .footer-minimal-center {
+      text-shadow: none;
+    }
+    .footer-minimal-right a {
+      pointer-events: auto;
+    }
+    /* iPhone 16 기준 모바일 최적화 */
+    @media (max-width: 1179px) {
+      .menu-header {
+        padding: 12px 16px;
+      }
+      .menu-header .logo img {
+        height: 14px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 10px;
+        margin-left: 16px;
+      }
+      .accessories-grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: 100vh;
+        gap: 4px;
+        padding: 0 4px;
+        scroll-snap-align: start;
+      }
+      .accessories-grid img {
+        height: 100%;
+        object-fit: cover;
+      }
+      .accessories-row {
+        flex-direction: row;
+        gap: 6px;
+        padding: 0 8px;
+      }
+      .accessories-row .half {
+        flex: 1;
+      }
+      .accessories-row-fullvh {
+        flex-direction: column;
+      }
+      .accessories-row-fullvh .half {
+        width: 100vw;
+        height: 50vh;
+      }
+      .caption {
+        font-size: 10px;
+        bottom: 8%;
+      }
+      .accessories-row-fullvh .caption {
+        font-size: 10px;
+        bottom: 8%;
+      }
+      .zoom-close {
+        top: 20px;
+        right: 24px;
+        font-size: 24px;
+      }
+      .site-footer-minimal,
+      .footer-minimal-container {
+        height: 48px;
+      }
+      .footer-minimal-center,
+      .footer-minimal-right a {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="menu-header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/logo/HTML MAIN LOGO.png" alt="HTML 7277 Logo" />
+      </a>
+    </div>
+    <nav class="main-nav-top">
+      <div class="dropdown">
+        <a href="collection.html" class="dropdown-toggle">COLLECTION</a>
+        <div class="dropdown-menu">
+          <a href="25.2.html">25.2</a>
+        </div>
+      </div>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="accessories-main">
+    <section class="acc-section">
+      <div class="accessories-row accessories-row-fullvh" style="margin-top: 0;">
+        <div class="half" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; width: 100%; height: 50vw; max-height: 100vh; align-items: center; justify-items: center; margin-top: 32px;">
+          <a href="acc.html?id=acc11" style="width:100%;height:100%;"><img src="images/acc/acc10.png" alt="acc10" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" /></a>
+          <a href="acc.html?id=acc11" style="width:100%;height:100%;"><img src="images/acc/acc11.png" alt="acc11" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" /></a>
+          <a href="acc.html?id=acc13" style="width:100%;height:100%;"><img src="images/acc/acc12.png" alt="acc12" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" /></a>
+          <a href="acc.html?id=acc13" style="width:100%;height:100%;"><img src="images/acc/acc13.png" alt="acc13" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" /></a>
+        </div>
+        <div class="half" onclick="window.location.href='acc.html?id=acc1'" style="height: 50vw; max-height: 100vh; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;">
+          <img src="images/acc/acc1.png" alt="acc1" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" />
+          <div class="caption">ACC 1</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="acc-section">
+      <div class="accessories-grid">
+        <div onclick="window.location.href='acc.html?id=acc2'"><img src="images/acc/acc2.png" alt="acc2" loading="lazy" /><div class="caption">ACC 2</div></div>
+        <div onclick="window.location.href='acc.html?id=acc3'"><img src="images/acc/acc3.png" alt="acc3" loading="lazy" /><div class="caption">ACC 3</div></div>
+        <div onclick="window.location.href='acc.html?id=acc4'"><img src="images/acc/acc4.png" alt="acc4" loading="lazy" /><div class="caption">ACC 4</div></div>
+        <div onclick="window.location.href='acc.html?id=acc5'"><img src="images/acc/acc5.png" alt="acc5" loading="lazy" /><div class="caption">ACC 5</div></div>
+      </div>
+    </section>
+
+    <section class="acc-section">
+      <div class="accessories-grid">
+        <div onclick="window.location.href='acc.html?id=acc6'"><img src="images/acc/acc6.png" alt="acc6" loading="lazy" /><div class="caption">ACC 6</div></div>
+        <div onclick="window.location.href='acc.html?id=acc7'"><img src="images/acc/acc7.png" alt="acc7" loading="lazy" /><div class="caption">ACC 7</div></div>
+        <div onclick="window.location.href='acc.html?id=acc8'"><img src="images/acc/acc8.png" alt="acc8" loading="lazy" /><div class="caption">ACC 8</div></div>
+        <div onclick="window.location.href='acc.html?id=acc9'"><img src="images/acc/acc9.png" alt="acc9" loading="lazy" /><div class="caption">ACC 9</div></div>
+      </div>
+    </section>
+
+    <section class="acc-section">
+      <div class="accessories-row accessories-row-fullvh">
+        <div class="half">
+          <img src="images/acc/acc6.png" alt="acc6" loading="lazy" style="width:82%;height:82%;object-fit:contain;" />
+          <div class="caption">ACC 6</div>
+        </div>
+        <div class="half">
+          <img src="images/campaign/campaign 5.jpg" alt="Campaign 5" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <section class="acc-section">
+      <div class="accessories-row accessories-row-fullvh">
+        <div class="half">
+          <img src="images/campaign/campaign 6.jpg" alt="Campaign 6" loading="lazy" />
+        </div>
+        <div class="half">
+          <img src="images/acc/acc7.png" alt="acc7" loading="lazy" style="width:82%;height:82%;object-fit:contain;" />
+          <div class="caption">ACC 7</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer-minimal">
+    <div class="footer-minimal-container">
+      <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
+      <div class="footer-minimal-right"><a href="#top" id="backToTop">back to top ↑</a></div>
+    </div>
+  </footer>
+  <script>
+    // Intersection Observer로 footer 조건부 표시
+    const footer = document.querySelector('.site-footer-minimal');
+    const sections = document.querySelectorAll('.acc-section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 마지막 section에만 footer 표시
+          if (entry.target === sections[sections.length - 1]) {
+            footer.style.display = 'block';
+          } else {
+            footer.style.display = 'none';
+          }
+        } else {
+          // section이 화면에서 벗어나면 footer 숨김
+          if (entry.target === sections[sections.length - 1]) {
+            footer.style.display = 'none';
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // 초기 상태: footer 숨김
+    footer.style.display = 'none';
+
+    document.getElementById('backToTop').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('.accessories-main').scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

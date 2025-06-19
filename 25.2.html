@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>25.2 | HTML 7277</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f6f6f6ff;
+    }
+    .menu-header {
+      background-color: transparent !important;
+    }
+    .main-nav-top a, .dropdown-toggle, .dropdown-menu a {
+      color: #fff;
+      transition: color 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    #main-logo {
+      transition: filter 0.4s cubic-bezier(.4,0,.2,1);
+    }
+    .section-wrapper {
+      padding: 0;
+      position: relative;
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    .collection-section {
+      height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      margin: 0;
+      padding: 0;
+    }
+    .full-image {
+      width: 100%;
+      height: 100vh;
+      margin-bottom: 0;
+      position: relative;
+    }
+    .full-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      loading: lazy;
+    }
+    .collection-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 60px 0;
+      background: #f6f6f6;
+      scroll-snap-align: start;
+    }
+    .look-box {
+      width: 100%;
+      background-color: #f6f6f6;
+      overflow: hidden;
+      display: block;
+      padding: 10px;
+    }
+    .look-box img {
+      width: 100%;
+      height: calc(100vh - 120px);
+      object-fit: cover;
+      display: block;
+      loading: lazy;
+    }
+    .campaign-row {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .campaign-box {
+      background-color: #f6f6f6;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 50vw;
+      padding: 60px 20px;
+    }
+    .campaign-box:first-child {
+      padding: 60px 20px;
+      margin-left: 10%;
+    }
+    .campaign-box:not(:first-child) {
+      padding: 0;
+    }
+    .campaign-box img {
+      width: 100%;
+      height: calc(100vh - 120px);
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      loading: lazy;
+    }
+    .campaign-box:not(:first-child) img {
+      height: 100vh;
+    }
+    .site-footer-minimal {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      background: transparent;
+      z-index: 1000;
+      padding: 0;
+      pointer-events: none;
+      margin: 0;
+      height: 68px;
+    }
+    .footer-minimal-container {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      height: 68px;
+    }
+    .footer-minimal-center,
+    .footer-minimal-right a {
+      color: rgba(255,255,255,0.85);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+    .footer-minimal-center {
+      text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .footer-minimal-right a {
+      pointer-events: auto;
+    }
+    .collection-section.last-campaign {
+      padding-bottom: 0;
+      height: 100vh;
+      scroll-snap-align: end;
+    }
+    @media (max-width: 1024px) {
+      .collection-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .campaign-row {
+        flex-direction: column;
+      }
+    }
+    /* iPhone 16 기준 모바일 최적화 */
+    @media (max-width: 1179px) {
+      .menu-header {
+        padding: 12px 16px;
+      }
+      .menu-header .logo img {
+        height: 14px;
+      }
+      .main-nav-top a,
+      .dropdown-toggle {
+        font-size: 10px;
+        margin-left: 16px;
+      }
+      
+      /* 모바일에서 데스크톱 섹션 숨김 */
+      .desktop-only {
+        display: none !important;
+      }
+      
+      /* 모바일 그리드 섹션 표시 */
+      .mobile-grid-section {
+        display: flex !important;
+      }
+      
+      .collection-row {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: 100vh;
+        padding: 10px 0;
+        gap: 2px;
+        scroll-snap-align: start;
+      }
+      .look-box {
+        padding: 2px;
+      }
+      .look-box img {
+        height: 100%;
+        object-fit: cover;
+      }
+      .campaign-row {
+        flex-direction: column;
+      }
+      .campaign-box {
+        padding: 20px 12px;
+      }
+      .campaign-box:first-child {
+        padding: 20px 12px;
+        margin-left: 0;
+      }
+      .campaign-box img {
+        height: calc(100vh - 80px);
+      }
+      .site-footer-minimal,
+      .footer-minimal-container {
+        height: 48px;
+      }
+      .footer-minimal-center,
+      .footer-minimal-right a {
+        font-size: 10px;
+      }
+    }
+    
+    /* 데스크톱에서 모바일 섹션 숨김 */
+    @media (min-width: 1180px) {
+      .mobile-grid-section {
+        display: none !important;
+      }
+      
+      .desktop-only {
+        display: flex !important;
+      }
+    }
+    #lookGallery {
+      width: auto;
+      max-width: 60vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-left: 16px;
+    }
+    #lookGallery img {
+      width: auto;
+      max-width: 100%;
+      height: calc(100vh - 64px);
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+    .main-nav-top {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  </style>
+</head>
+<body>
+  <header class="menu-header">
+    <div class="logo" style="position: relative;">
+      <img id="main-logo-white" src="images/logo/HTML WHITE LOGO.png" style="position:absolute; left:0; top:0; transition:opacity 0.4s; opacity:1;">
+      <img id="main-logo-black" src="images/logo/HTML MAIN LOGO.png" style="position:absolute; left:0; top:0; transition:opacity 0.4s; opacity:0;">
+    </div>
+    <nav class="main-nav-top">
+      <div class="dropdown">
+        <a href="collection.html" class="dropdown-toggle">COLLECTION</a>
+        <div class="dropdown-menu">
+          <a href="25.2.html">25.2</a>
+        </div>
+      </div>
+      <a href="accessories.html">ACCESSORIES</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <main class="section-wrapper">
+    <section class="collection-section">
+      <div class="full-image">
+        <img src="images/campaign/campaign 1.jpg" alt="Campaign 1" loading="lazy" />
+      </div>
+    </section>
+    
+    <!-- 모바일용 4x3 그리드 섹션 -->
+    <section class="collection-section mobile-grid-section">
+      <div class="collection-row">
+        <a href="look.html?id=1" class="look-box"><img src="images/25.2 looks/Look 1-1.png" alt="Look 1" loading="lazy" /></a>
+        <a href="look.html?id=2" class="look-box"><img src="images/25.2 looks/Look 2-1.png" alt="Look 2" loading="lazy" /></a>
+        <a href="look.html?id=3" class="look-box"><img src="images/25.2 looks/Look 3-1.png" alt="Look 3" loading="lazy" /></a>
+        <a href="look.html?id=4" class="look-box"><img src="images/25.2 looks/Look 4-1.png" alt="Look 4" loading="lazy" /></a>
+        <a href="look.html?id=5" class="look-box"><img src="images/25.2 looks/Look 5-1.png" alt="Look 5" loading="lazy" /></a>
+        <a href="look.html?id=6" class="look-box"><img src="images/25.2 looks/Look 6-1.png" alt="Look 6" loading="lazy" /></a>
+        <a href="look.html?id=7" class="look-box"><img src="images/25.2 looks/Look 7-1.png" alt="Look 7" loading="lazy" /></a>
+        <a href="look.html?id=8" class="look-box"><img src="images/25.2 looks/Look 8-1.png" alt="Look 8" loading="lazy" /></a>
+        <a href="look.html?id=9" class="look-box"><img src="images/25.2 looks/Look 9-1.png" alt="Look 9" loading="lazy" /></a>
+        <a href="look.html?id=10" class="look-box"><img src="images/25.2 looks/Look 10-1.png" alt="Look 10" loading="lazy" /></a>
+        <a href="look.html?id=11" class="look-box"><img src="images/25.2 looks/Look 11-1.png" alt="Look 11" loading="lazy" /></a>
+        <a href="look.html?id=12" class="look-box"><img src="images/25.2 looks/Look 12-1.png" alt="Look 12" loading="lazy" /></a>
+      </div>
+    </section>
+    
+    <!-- 데스크톱용 개별 섹션들 (모바일에서는 숨김) -->
+    <section class="collection-section desktop-only">
+      <div class="collection-row">
+        <a href="look.html?id=1" class="look-box"><img src="images/25.2 looks/Look 1-1.png" alt="Look 1" loading="lazy" /></a>
+        <a href="look.html?id=2" class="look-box"><img src="images/25.2 looks/Look 2-1.png" alt="Look 2" loading="lazy" /></a>
+        <a href="look.html?id=3" class="look-box"><img src="images/25.2 looks/Look 3-1.png" alt="Look 3" loading="lazy" /></a>
+        <a href="look.html?id=4" class="look-box"><img src="images/25.2 looks/Look 4-1.png" alt="Look 4" loading="lazy" /></a>
+      </div>
+    </section>
+    <section class="collection-section desktop-only">
+      <div class="collection-row">
+        <a href="look.html?id=5" class="look-box"><img src="images/25.2 looks/Look 5-1.png" alt="Look 5" loading="lazy" /></a>
+        <a href="look.html?id=6" class="look-box"><img src="images/25.2 looks/Look 6-1.png" alt="Look 6" loading="lazy" /></a>
+        <a href="look.html?id=7" class="look-box"><img src="images/25.2 looks/Look 7-1.png" alt="Look 7" loading="lazy" /></a>
+        <a href="look.html?id=8" class="look-box"><img src="images/25.2 looks/Look 8-1.png" alt="Look 8" loading="lazy" /></a>
+      </div>
+    </section>
+    <section class="collection-section desktop-only">
+      <div class="collection-row">
+        <a href="look.html?id=9" class="look-box"><img src="images/25.2 looks/Look 9-1.png" alt="Look 9" loading="lazy" /></a>
+        <a href="look.html?id=10" class="look-box"><img src="images/25.2 looks/Look 10-1.png" alt="Look 10" loading="lazy" /></a>
+        <a href="look.html?id=11" class="look-box"><img src="images/25.2 looks/Look 11-1.png" alt="Look 11" loading="lazy" /></a>
+        <a href="look.html?id=12" class="look-box"><img src="images/25.2 looks/Look 12-1.png" alt="Look 12" loading="lazy" /></a>
+      </div>
+    </section>
+    
+    <section class="collection-section">
+      <div class="campaign-row campaign-row-fullvh">
+        <div class="campaign-box"><a href="look.html?id=17"><img src="images/25.2 looks/Look 17-1.png" alt="Look 17-1" loading="lazy" /></a></div>
+        <div class="campaign-box"><img src="images/campaign/campaign 3.jpg" alt="Campaign 3" loading="lazy" /></div>
+      </div>
+    </section>
+    
+    <!-- 모바일용 두 번째 4x3 그리드 섹션 -->
+    <section class="collection-section mobile-grid-section">
+      <div class="collection-row">
+        <a href="look.html?id=13" class="look-box"><img src="images/25.2 looks/Look 13-1.png" alt="Look 13" loading="lazy" /></a>
+        <a href="look.html?id=14" class="look-box"><img src="images/25.2 looks/Look 14-1.png" alt="Look 14" loading="lazy" /></a>
+        <a href="look.html?id=15" class="look-box"><img src="images/25.2 looks/Look 15-1.png" alt="Look 15" loading="lazy" /></a>
+        <a href="look.html?id=16" class="look-box"><img src="images/25.2 looks/Look 16-1.png" alt="Look 16" loading="lazy" /></a>
+        <a href="look.html?id=18" class="look-box"><img src="images/25.2 looks/Look 18-1.png" alt="Look 18" loading="lazy" /></a>
+        <a href="look.html?id=19" class="look-box"><img src="images/25.2 looks/Look 19-1.png" alt="Look 19" loading="lazy" /></a>
+        <a href="look.html?id=20" class="look-box"><img src="images/25.2 looks/Look 20-1.png" alt="Look 20" loading="lazy" /></a>
+        <a href="look.html?id=21" class="look-box"><img src="images/25.2 looks/Look 21-1.png" alt="Look 21" loading="lazy" /></a>
+        <a href="look.html?id=22" class="look-box"><img src="images/25.2 looks/Look 22-1.png" alt="Look 22" loading="lazy" /></a>
+        <a href="look.html?id=23" class="look-box"><img src="images/25.2 looks/Look 23-1.png" alt="Look 23" loading="lazy" /></a>
+        <a href="look.html?id=24" class="look-box"><img src="images/25.2 looks/Look 24-1.png" alt="Look 24" loading="lazy" /></a>
+        <a href="look.html?id=25" class="look-box"><img src="images/25.2 looks/Look 25-1.png" alt="Look 25" loading="lazy" /></a>
+      </div>
+    </section>
+    
+    <!-- 데스크톱용 개별 섹션들 (모바일에서는 숨김) -->
+    <section class="collection-section desktop-only">
+      <div class="collection-row">
+        <a href="look.html?id=13" class="look-box"><img src="images/25.2 looks/Look 13-1.png" alt="Look 13" loading="lazy" /></a>
+        <a href="look.html?id=14" class="look-box"><img src="images/25.2 looks/Look 14-1.png" alt="Look 14" loading="lazy" /></a>
+        <a href="look.html?id=15" class="look-box"><img src="images/25.2 looks/Look 15-1.png" alt="Look 15" loading="lazy" /></a>
+        <a href="look.html?id=16" class="look-box"><img src="images/25.2 looks/Look 16-1.png" alt="Look 16" loading="lazy" /></a>
+      </div>
+    </section>
+    <section class="collection-section desktop-only">
+      <div class="collection-row">
+        <a href="look.html?id=18" class="look-box"><img src="images/25.2 looks/Look 18-1.png" alt="Look 18" loading="lazy" /></a>
+        <a href="look.html?id=19" class="look-box"><img src="images/25.2 looks/Look 19-1.png" alt="Look 19" loading="lazy" /></a>
+        <a href="look.html?id=20" class="look-box"><img src="images/25.2 looks/Look 20-1.png" alt="Look 20" loading="lazy" /></a>
+        <a href="look.html?id=21" class="look-box"><img src="images/25.2 looks/Look 21-1.png" alt="Look 21" loading="lazy" /></a>
+      </div>
+    </section>
+    <section class="collection-section desktop-only">
+      <div class="collection-row">
+        <a href="look.html?id=22" class="look-box"><img src="images/25.2 looks/Look 22-1.png" alt="Look 22" loading="lazy" /></a>
+        <a href="look.html?id=23" class="look-box"><img src="images/25.2 looks/Look 23-1.png" alt="Look 23" loading="lazy" /></a>
+        <a href="look.html?id=24" class="look-box"><img src="images/25.2 looks/Look 24-1.png" alt="Look 24" loading="lazy" /></a>
+        <a href="look.html?id=25" class="look-box"><img src="images/25.2 looks/Look 25-1.png" alt="Look 25" loading="lazy" /></a>
+      </div>
+    </section>
+    
+    <section class="collection-section last-campaign">
+      <div class="full-image">
+        <img src="images/campaign/campaign 2.jpg" alt="Campaign 2" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer-minimal">
+    <div class="footer-minimal-container">
+      <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
+      <div class="footer-minimal-right"><a href="#top" id="backToTop">back to top ↑</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer로 메뉴/로고 색상 자동 전환
+    const navLinks = document.querySelectorAll('.main-nav-top a, .dropdown-toggle, .dropdown-menu a');
+    const logoWhite = document.getElementById('main-logo-white');
+    const logoBlack = document.getElementById('main-logo-black');
+    const menuHeader = document.querySelector('.menu-header');
+    const sections = document.querySelectorAll('.collection-section');
+    const footer = document.querySelector('.site-footer-minimal');
+
+    // 이미지 밝기 감지 함수
+    function getImageBrightness(img) {
+      return new Promise((resolve) => {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = 100;
+        canvas.height = 100;
+        
+        ctx.drawImage(img, 0, 0, 100, 100);
+        const imageData = ctx.getImageData(0, 0, 100, 100).data;
+        
+        let brightness = 0;
+        for (let i = 0; i < imageData.length; i += 4) {
+          brightness += (imageData[i] * 0.299 + imageData[i + 1] * 0.587 + imageData[i + 2] * 0.114);
+        }
+        brightness = brightness / (imageData.length / 4);
+        resolve(brightness);
+      });
+    }
+
+    function setMenuTheme(theme, keepLogoBlack = false) {
+      if (theme === 'dark') {
+        navLinks.forEach(link => link.style.color = '#fff');
+        if (!keepLogoBlack) {
+          logoWhite.style.opacity = '1';
+          logoBlack.style.opacity = '0';
+        }
+      } else {
+        navLinks.forEach(link => link.style.color = '#222');
+        logoWhite.style.opacity = '0';
+        logoBlack.style.opacity = '1';
+      }
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(async (entry) => {
+        if (entry.isIntersecting) {
+          const section = entry.target;
+          
+          // 2x1 그리드에서만 이미지 밝기 감지 적용
+          if (section.querySelector('.campaign-row')) {
+            const images = section.querySelectorAll('img');
+            if (images.length > 0) {
+              const brightness = await getImageBrightness(images[0]);
+              const isDark = brightness < 128;
+              
+              if (isDark) {
+                setMenuTheme('dark');
+              } else {
+                setMenuTheme('light');
+              }
+            }
+          } else if (section.querySelector('.full-image') || section.classList.contains('last-campaign')) {
+            // 캠페인 이미지 section 또는 마지막 section은 dark
+            setMenuTheme('dark');
+          } else {
+            // 나머지는 light
+            setMenuTheme('light');
+          }
+          
+          // 마지막 캠페인 section에만 footer 표시
+          if (section.classList.contains('last-campaign')) {
+            footer.style.display = 'block';
+          } else {
+            footer.style.display = 'none';
+          }
+        } else {
+          // section이 화면에서 벗어나면 footer 숨김
+          if (entry.target.classList.contains('last-campaign')) {
+            footer.style.display = 'none';
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // 초기 상태: 첫 번째 section이 캠페인 이미지이므로 dark theme 적용
+    setMenuTheme('dark');
+    footer.style.display = 'none';
+
+    document.getElementById('backToTop').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector('.section-wrapper').scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    let scrollTimeout = null;
+
+    gallery.addEventListener('scroll', () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        // 스크롤이 멈춘 뒤에만 active 처리
+        let found = 0;
+        galleryImgs.forEach((img, idx) => {
+          const rect = img.getBoundingClientRect();
+          if (rect.top < window.innerHeight / 2) found = idx;
+        });
+        thumbImgs.forEach(t => t.classList.remove('active'));
+        thumbImgs[found].classList.add('active');
+      }, 120); // 120ms 후에만 active 적용
+    });
+  </script>
+</body>
+</html>
