@@ -81,23 +81,23 @@
       height: 100vh;
       margin: 0;
       padding: 0;
+      gap: 0;
     }
     .campaign-box {
       background-color: #f6f6f6;
       overflow: hidden;
       display: flex;
       align-items: center;
-      justify-content: center;
       height: 100%;
       width: 50vw;
-      padding: 60px 20px;
+      padding: 0;
+      margin: 0;
     }
     .campaign-box:first-child {
-      padding: 60px 20px;
-      margin-left: 10%;
+      justify-content: flex-end;
     }
-    .campaign-box:not(:first-child) {
-      padding: 0;
+    .campaign-box:last-child {
+      justify-content: center;
     }
     .campaign-box img {
       width: 100%;
