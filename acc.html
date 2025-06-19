@@ -534,9 +534,9 @@
     <div class="acc-images-scroll">
       <div class="acc-thumbnails" id="accThumbnails"></div>
       <div id="accGallery"></div>
-    </div>
-    <div class="acc-desc">
-      <div id="accDescBox"></div>
+      <div class="acc-desc">
+        <div id="accDescBox"></div>
+      </div>
     </div>
   </main>
   <footer class="site-footer-minimal">
@@ -667,6 +667,12 @@
       // 썸네일 클릭 이벤트
       const galleryImgs = gallery.querySelectorAll('img');
       const thumbImgs = thumbnails.querySelectorAll('img');
+      
+      // 첫 번째 썸네일에 active 클래스 추가
+      if (thumbImgs.length > 0) {
+        thumbImgs[0].classList.add('active');
+      }
+      
       thumbImgs.forEach((thumb, idx) => {
         thumb.addEventListener('click', () => {
           // 모바일에서는 헤더 높이를 동적으로 계산

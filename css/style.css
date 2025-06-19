@@ -57,7 +57,7 @@ body {
   top: 0;
   left: 0;
   z-index: 10;
-  background-color: white;
+  background-color: transparent;
 }
 
 .menu-header .logo img {
@@ -248,60 +248,59 @@ body {
 }
 
 /* Responsive */
+@media (max-width: 1179px) {
+  .menu-header {
+    padding: 12px 16px;
+  }
+  .menu-header .logo img {
+    height: 14px;
+  }
+  .main-nav-top a,
+  .dropdown-toggle {
+    font-size: 10px;
+    margin-left: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .menu-header {
-    flex-direction: column;
-    padding: 16px 24px;
+    padding: 16px 20px;
   }
-
-  .main-nav-top {
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+  .menu-header .logo img {
+    height: 14px;
   }
-
   .main-nav-top a,
-  .dropdown {
-    margin-left: 0;
-    margin-top: 8px;
+  .dropdown-toggle {
+    font-size: 10px;
+    margin-left: 20px;
   }
+}
 
-  .main-nav {
-    top: auto;
-    bottom: 24px;
+@media (max-width: 600px) {
+  .menu-header {
+    padding: 12px 16px;
   }
-
-  .accessories-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .menu-header .logo img {
+    height: 12px;
   }
-
-  .accessories-row {
-    flex-direction: column;
-  }
-
-  .accessories-intro {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .collection-main,
-  .about-main,
-  .contact-main,
-  .accessories-main {
-    padding: 120px 24px 24px 24px;
-    font-size: 14px;
-  }
-
-  .collection-main h1,
-  .accessories-main h1,
-  .about-main h1,
-  .contact-main h1 {
-    font-size: 18px;
-  }
-
-  .main-nav a {
+  .main-nav-top a,
+  .dropdown-toggle {
     font-size: 9px;
-    margin: 0 8px;
+    margin-left: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-header {
+    padding: 10px 12px;
+  }
+  .menu-header .logo img {
+    height: 10px;
+  }
+  .main-nav-top a,
+  .dropdown-toggle {
+    font-size: 8px;
+    margin-left: 12px;
   }
 }
 
