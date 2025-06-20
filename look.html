@@ -95,8 +95,17 @@
     }
     .look-desc {
       position: static;
-      padding-left: 160px;
-      margin-top: 12vh;
+      padding-left: 160px !important;
+      margin-top: 12vh !important;
+      width: auto !important;
+      max-width: none !important;
+      text-align: left !important;
+      box-sizing: border-box;
+    }
+    .look-desc h2, .look-desc p {
+      text-align: left !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
     .look-desc h2 {
       font-size: 18px;
@@ -105,7 +114,6 @@
       letter-spacing: 0.02em;
       color: #222;
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      text-align: left;
     }
     .look-desc p {
       font-size: 14px;
@@ -113,7 +121,6 @@
       color: #222;
       margin-bottom: 0;
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      text-align: left;
     }
     .site-footer-minimal {
       position: static;
@@ -332,10 +339,18 @@
       .zoom-btn:active {
         background: #111;
       }
-      .look-desc,
-      .look-desc h2,
-      .look-desc p {
+      .look-desc {
+        padding-left: 0 !important;
+        margin-top: 0 !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
         text-align: center !important;
+        box-sizing: border-box;
+      }
+      .look-desc h2, .look-desc p {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
       }
       .image-modal .modal-content {
         width: 100vw !important;
@@ -370,6 +385,22 @@
       .look-thumbnails {
         z-index: 2 !important;
         position: static !important;
+      }
+    }
+    @media (min-width: 1180px) {
+      .look-desc {
+        position: static;
+        padding-left: 160px !important;
+        margin-top: 12vh !important;
+        width: auto !important;
+        max-width: none !important;
+        text-align: left !important;
+        box-sizing: border-box;
+      }
+      .look-desc h2, .look-desc p {
+        text-align: left !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
       }
     }
   </style>
@@ -524,6 +555,123 @@
         ],
         title: "LOOK 12",
         description: `Logo T-Shirt 001<br>Logo embroidery t-shirt<br>Cotton jersey / Black<br>HT252TP001<br><br>Officer Skirt 001<br>Pocket detail skirt<br>Cotton poly blend / Anchor Gray<br>HT252SK002<br><br>Officer Waist Bag 001<br>Velcro detail waist bag<br>Cotton poly blend / Anchor Gray<br>HT252BG008`
+      },
+      13: {
+        images: [
+          "images/25.2 looks/Look 13-1.jpg",
+          "images/25.2 looks/Look 13-2.jpg",
+          "images/25.2 looks/Look 13-3.jpg"
+        ],
+        title: "LOOK 13",
+        description: `Officer Shirt 001<br>Slash pocket detail shirt<br>Cotton poplin / White<br>HT252TP003<br><br>Force Pants 001<br>Force pocket detail pants<br>Cotton poly blend / Anchor Gray<br>HT252PT001<br><br>Black Satin Logo Tie<br>Logo embroidered satin tie<br>Satin / Black<br>HT252NT002<br><br>Force Tote Bag 001<br>Force detail pocket tote bag<br>Cotton poly blend / Anchor Gray<br>HT252BG006`
+      },
+      14: {
+        images: [
+          "images/25.2 looks/Look 14-1.jpg",
+          "images/25.2 looks/Look 14-2.jpg",
+          "images/25.2 looks/Look 14-3.jpg"
+        ],
+        title: "LOOK 14",
+        description: `Agent Jacket 001<br>Collarless slit pocket detail jacket<br>Poly twill / Black<br>HT252JK003<br><br>Agent Shirt 001<br>Style line detail shirt<br>Cotton poplin / White<br>HT252TP004<br><br>Agent Pants 001<br>Darted seam transformable pants<br>Poly twill / Black<br>HT252PT003<br><br>Black Satin Logo Tie<br>Logo embroidered satin tie<br>Satin / Black<br>HT252NT002`
+      },
+      15: {
+        images: [
+          "images/25.2 looks/Look 15-1.jpg",
+          "images/25.2 looks/Look 15-2.jpg",
+          "images/25.2 looks/Look 15-3.jpg"
+        ],
+        title: "LOOK 15",
+        description: `Agent Jacket 001<br>Collarless slit pocket detail jacket<br>Poly twill / Black<br>HT252JK003<br><br>Agent Shirt 001<br>Style line detail shirt<br>Cotton poplin / White<br>HT252TP004<br><br>Agent Pants 001<br>Darted seam transformable pants<br>Poly twill / Black<br>HT252PT003<br><br>Black Satin Logo Tie<br>Logo embroidered satin tie<br>Satin / Black<br>HT252NT002<br><br>Over Sleeve 002<br>Logo embroidered over-sleeve with pin<br>Poly twill / Black<br>HT252OS002`
+      },
+      16: {
+        images: [
+          "images/25.2 looks/Look 16-1.jpg",
+          "images/25.2 looks/Look 16-2.jpg",
+          "images/25.2 looks/Look 16-3.jpg"
+        ],
+        title: "LOOK 16",
+        description: `Aud Shirt 001<br>Slash pocket layer detail shirt<br>Cotton poplin / Off white<br>HT252TP005<br><br>Force Pants 002<br>Force pocket detail pants<br>Poly canvas / Phantom Gray<br>HT252PT002<br><br>Black Leather Tie<br>Nappa leather tie<br>Nappa leather / Black<br>HT252NT003`
+      },
+      17: {
+        images: [
+          "images/25.2 looks/Look 17-1.jpg",
+          "images/25.2 looks/Look 17-2.jpg",
+          "images/25.2 looks/Look 17-3.jpg"
+        ],
+        title: "LOOK 17",
+        description: `Aud Shirt 001<br>Slash pocket layer detail shirt<br>Cotton poplin / Off white<br>HT252TP005<br><br>Aud Dress 001<br>Asymmetrical dress<br>Gabardine wool / Asphalt Gray<br>HT252DR001<br><br>Force Skirt 001<br>Force pocket detail skirt<br>Gabardine wool / Asphalt Gray<br>HT252SK001<br><br>Black Leather Tie<br>Nappa leather tie<br>Nappa leather / Black<br>HT252NT003<br><br>72 Leather Belt<br>Medium length leather belt with metal keeper<br>Veg tan leather / Black<br>HT252BT001`
+      },
+      18: {
+        images: [
+          "images/25.2 looks/Look 18-1.jpg",
+          "images/25.2 looks/Look 18-2.jpg",
+          "images/25.2 looks/Look 18-3.jpg"
+        ],
+        title: "LOOK 18",
+        description: `Officer Jacket 002<br>Seam detail jacket<br>Waxed cotton / Rusty Cement<br>HT252JK006<br><br>Officer Pants 002<br>Darted and pleated detail pants<br>Waxed cotton / Rusty Cement<br>HT252PT005`
+      },
+      19: {
+        images: [
+          "images/25.2 looks/Look 19-1.jpg",
+          "images/25.2 looks/Look 19-2.jpg",
+          "images/25.2 looks/Look 19-3.jpg"
+        ],
+        title: "LOOK 19",
+        description: `Force Coat 001<br>Logo embroidered force pocket detail coat<br>Waxed cotton / Dusty Moss<br>HT252CT001<br><br>Aud Pants 001<br>Darted pants<br>Wool blend / Black<br>HT252PT006<br><br>77 Leather Belt<br>Long length leather belt with leather keeper<br>Veg tan leather / Black<br>HT252BT002`
+      },
+      20: {
+        images: [
+          "images/25.2 looks/Look 20-1.jpg",
+          "images/25.2 looks/Look 20-2.jpg",
+          "images/25.2 looks/Look 20-3.jpg"
+        ],
+        title: "LOOK 20",
+        description: `Agent Vest 001<br>Leather vest with slit pocket detail<br>Smooth calf leather / Black<br>HT252JK004<br><br>Aud Pants 001<br>Darted pants<br>Wool blend / Black<br>HT252PT006<br><br>H1 Smooth Calf Leather Tote Bag<br>Leather tote bag with pipe handle<br>Smooth calf leather / Black<br>HT252BG001`
+      },
+      21: {
+        images: [
+          "images/25.2 looks/Look 21-1.jpg",
+          "images/25.2 looks/Look 21-2.jpg",
+          "images/25.2 looks/Look 21-3.jpg"
+        ],
+        title: "LOOK 21",
+        description: `Force Coat 001<br>Logo embroidered force pocket detail coat<br>Waxed cotton / Dusty Moss<br>HT252CT001<br><br>Agent Vest 001<br>Leather vest with slit pocket detail<br>Smooth calf leather / Black<br>HT252JK004<br><br>Aud Pants 001<br>Darted pants<br>Wool blend / Black<br>HT252PT006<br><br>77 Leather Belt<br>Long length leather belt with leather keeper<br>Veg tan leather / Black<br>HT252BT002`
+      },
+      22: {
+        images: [
+          "images/25.2 looks/Look 22-1.jpg",
+          "images/25.2 looks/Look 22-2.jpg",
+          "images/25.2 looks/Look 22-3.jpg"
+        ],
+        title: "LOOK 22",
+        description: `Agent Shirt 001<br>Style line detail shirt<br>Cotton poplin / White<br>HT252TP004<br><br>Force Skirt 002<br>Force pocket detail skirt<br>Waxed cotton / Rusty Cement<br>HT252SK003<br><br>Black Satin Tie<br>Satin tie<br>Satin / Black<br>HT252NT001`
+      },
+      23: {
+        images: [
+          "images/25.2 looks/Look 23-1.jpg",
+          "images/25.2 looks/Look 23-2.jpg",
+          "images/25.2 looks/Look 23-3.jpg"
+        ],
+        title: "LOOK 23",
+        description: `Agent Shirt 001<br>Style line detail shirt<br>Cotton poplin / White<br>HT252TP004<br><br>Force Skirt 002<br>Force pocket detail skirt<br>Waxed cotton / Rusty Cement<br>HT252SK003<br><br>Sect Oversized Box Bag<br>Seam detail box bag<br>Waxed cotton / Rusty Cement<br>HT252SC002<br><br>Black Satin Tie<br>Satin tie<br>Satin / Black<br>HT252NT001`
+      },
+      24: {
+        images: [
+          "images/25.2 looks/Look 24-1.jpg",
+          "images/25.2 looks/Look 24-2.jpg",
+          "images/25.2 looks/Look 24-3.jpg"
+        ],
+        title: "LOOK 24",
+        description: `Sect Hooded Oversized Jacket<br>Seam detail hooded oversized jacket<br>Waxed cotton / Rusty Cement<br>HT252SC003<br><br>Agent Shirt 001<br>Style line detail shirt<br>Cotton poplin / White<br>HT252TP004<br><br>Force Skirt 002<br>Force pocket detail skirt<br>Waxed cotton / Rusty Cement<br>HT252SK003<br><br>Sect Oversized Box Bag<br>Seam detail box bag<br>Waxed cotton / Rusty Cement<br>HT252SC002<br><br>Black Satin Tie<br>Satin tie<br>Satin / Black<br>HT252NT001`
+      },
+      25: {
+        images: [
+          "images/25.2 looks/Look 25-1.jpg",
+          "images/25.2 looks/Look 25-2.jpg",
+          "images/25.2 looks/Look 25-3.jpg"
+        ],
+        title: "LOOK 25",
+        description: `Sect Cape 001<br>Back-zipper logo embroidered cape<br>Poly canvas / Phantom Gray<br>HT252SC001`
       }
     };
 
@@ -573,24 +721,42 @@
       });
       
       galleryImgs.forEach((img) => {
+        // 데스크탑(1180px 이상)에서만 이미지 클릭/터치 시 확대
         img.addEventListener('click', () => {
-          openModal(img.src);
+          if (window.innerWidth > 1179) openModal(img.src);
         });
-        
         img.addEventListener('touchend', (e) => {
-          e.preventDefault();
-          openModal(img.src);
+          if (window.innerWidth > 1179) {
+            e.preventDefault();
+            openModal(img.src);
+          }
         });
       });
       
       gallery.addEventListener('scroll', () => {
-        if (window.innerWidth <= 1179) return;
         let found = 0;
-        const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
-        galleryImgs.forEach((img, idx) => {
-          const rect = img.getBoundingClientRect();
-          if (rect.top < (window.innerHeight / 2) + headerHeight) found = idx;
-        });
+        if (window.innerWidth <= 1179) {
+          // 모바일: 가로 스크롤 기준으로 중앙에 가장 가까운 이미지 찾기
+          const galleryRect = gallery.getBoundingClientRect();
+          let minDiff = Infinity;
+          galleryImgs.forEach((img, idx) => {
+            const rect = img.getBoundingClientRect();
+            const imgCenter = rect.left + rect.width / 2;
+            const galleryCenter = galleryRect.left + galleryRect.width / 2;
+            const diff = Math.abs(imgCenter - galleryCenter);
+            if (diff < minDiff) {
+              minDiff = diff;
+              found = idx;
+            }
+          });
+        } else {
+          // 데스크탑: 기존 방식 유지
+          const headerHeight = 64;
+          galleryImgs.forEach((img, idx) => {
+            const rect = img.getBoundingClientRect();
+            if (rect.top < (window.innerHeight / 2) + headerHeight) found = idx;
+          });
+        }
         thumbImgs.forEach(t => t.classList.remove('active'));
         if (thumbImgs[found]) thumbImgs[found].classList.add('active');
       });

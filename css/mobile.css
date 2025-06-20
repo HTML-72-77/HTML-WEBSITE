@@ -758,4 +758,10 @@ PAGE-SPECIFIC OVERRIDES: 25.2.html
   .collection-row {
     margin-top: 0 !important;
   }
+
+  .mobile-grid-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 8vh !important;
+  }
 } 

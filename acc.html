@@ -590,14 +590,15 @@
       
       // 이미지 클릭 시 모달 열기
       galleryImgs.forEach((img) => {
+        // 데스크탑(1180px 이상)에서만 이미지 클릭/터치 시 확대
         img.addEventListener('click', () => {
-          openModal(img.src);
+          if (window.innerWidth > 1179) openModal(img.src);
         });
-        
-        // 터치 이벤트 추가 (모바일용)
         img.addEventListener('touchend', (e) => {
-          e.preventDefault();
-          openModal(img.src);
+          if (window.innerWidth > 1179) {
+            e.preventDefault();
+            openModal(img.src);
+          }
         });
       });
       
