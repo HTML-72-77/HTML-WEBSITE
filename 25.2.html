@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>25.2 | HTML 7277</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 1179px)">
   <style>
     body {
       margin: 0;
@@ -13,6 +14,8 @@
     }
     .menu-header {
       background-color: transparent !important;
+      opacity: 0; /* 로딩 전에 헤더 전체 숨김 */
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .main-nav-top a, .dropdown-toggle, .dropdown-menu a {
       color: #fff;
@@ -21,6 +24,7 @@
     #main-logo {
       transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: opacity;
+      opacity: 0; /* 로딩 전에 숨김 */
     }
     .section-wrapper {
       padding: 0;
@@ -38,6 +42,17 @@
       align-items: stretch;
       margin: 0;
       padding: 0;
+    }
+    
+    /* 모바일에서 collection-section 마진 제외 */
+    @media (max-width: 1179px) {
+      .mobile-grid-section {
+        margin-top: 160px !important;
+      }
+      
+      .look17-campaign-section .campaign-row {
+        margin-top: 0 !important;
+      }
     }
     .full-image {
       width: 100%;
@@ -96,7 +111,7 @@
     .campaign-box:first-child {
       padding: 60px 20px;
       margin-left: 0;
-      justify-content: flex-end;
+      justify-content: center;
     }
     .campaign-box:not(:first-child) {
       padding: 0;
@@ -113,7 +128,7 @@
       height: 100vh;
     }
     .campaign-box:first-child a {
-      margin-right: 7vw;
+      margin-right: 0;
       display: inline-block;
     }
     .site-footer-minimal {
@@ -142,8 +157,6 @@
     .footer-minimal-center,
     .footer-minimal-right a {
       color: rgba(255,255,255,0.85);
-      font-size: 11px;
-      letter-spacing: 0.05em;
     }
     .footer-minimal-center {
       text-shadow: 0 2px 8px rgba(0,0,0,0.18);
@@ -155,75 +168,6 @@
       padding-bottom: 0;
       height: 100vh;
       scroll-snap-align: end;
-    }
-    @media (max-width: 1024px) {
-      .collection-row {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .campaign-row {
-        flex-direction: column;
-      }
-    }
-    /* iPhone 16 기준 모바일 최적화 */
-    @media (max-width: 1179px) {
-      .menu-header {
-        padding: 12px 16px;
-      }
-      .menu-header .logo img {
-        height: 14px;
-      }
-      .main-nav-top a,
-      .dropdown-toggle {
-        font-size: 10px;
-        margin-left: 16px;
-      }
-      
-      /* 모바일에서 데스크톱 섹션 숨김 */
-      .desktop-only {
-        display: none !important;
-      }
-      
-      /* 모바일 그리드 섹션 표시 */
-      .mobile-grid-section {
-        display: flex !important;
-      }
-      
-      .collection-row {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        height: 100vh;
-        padding: 10px 0;
-        gap: 2px;
-        scroll-snap-align: start;
-      }
-      .look-box {
-        padding: 2px;
-      }
-      .look-box img {
-        height: 100%;
-        object-fit: cover;
-      }
-      .campaign-row {
-        flex-direction: column;
-      }
-      .campaign-box {
-        padding: 20px 12px;
-      }
-      .campaign-box:first-child {
-        padding: 20px 12px;
-        margin-left: 0;
-      }
-      .campaign-box img {
-        height: calc(100vh - 80px);
-      }
-      .site-footer-minimal,
-      .footer-minimal-container {
-        height: 48px;
-      }
-      .footer-minimal-center,
-      .footer-minimal-right a {
-        font-size: 10px;
-      }
     }
     
     /* 데스크톱에서 모바일 섹션 숨김 */
@@ -265,6 +209,85 @@
       opacity: 1; 
       transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
     }
+    /* 로딩 완료 후 로고 표시 */
+    body:not(.loading) #main-logo {
+      opacity: 1;
+    }
+    
+    /* 로딩 완료 후 헤더 표시 */
+    body:not(.loading) .menu-header {
+      opacity: 1;
+    }
+    
+    /* 모바일에서만 4x3 그리드 적용 */
+    @media (max-width: 768px) {
+      .mobile-grid-section .collection-row {
+        grid-template-columns: repeat(4, 1fr) !important;
+        grid-template-rows: repeat(3, 1fr) !important;
+        /* 모바일에서만 스크롤 스냅 제거 */
+        scroll-snap-align: none !important;
+      }
+      
+      /* 2x1 섹션을 모바일에서 세로 레이아웃으로 변경 */
+      .campaign-row {
+        flex-direction: column !important;
+        height: 100vh !important;
+        /* 모바일에서만 스크롤 스냅 제거 */
+        scroll-snap-align: none !important;
+      }
+      
+      .campaign-box {
+        width: 100% !important;
+        height: 50vh !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+      
+      .campaign-box:first-child {
+        padding: 20px !important;
+        margin-right: 0 !important;
+        order: 2 !important; /* 모바일에서 두 번째로 배치 */
+      }
+      
+      .campaign-box:not(:first-child) {
+        order: 1 !important; /* 모바일에서 첫 번째로 배치 */
+      }
+      
+      .campaign-box img {
+        height: calc(50vh - 40px) !important;
+        width: auto !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+      }
+      
+      .campaign-box:first-child a {
+        margin-right: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 100% !important;
+      }
+    }
+    
+    /* 작은 모바일에서 추가 최적화 */
+    @media (max-width: 480px) {
+      .campaign-box:first-child {
+        padding: 16px !important;
+      }
+      
+      .campaign-box img {
+        height: calc(50vh - 32px) !important;
+      }
+      
+      /* 작은 모바일에서도 스크롤 스냅 제거 */
+      .collection-row {
+        scroll-snap-align: none !important;
+      }
+      
+      .campaign-row {
+        scroll-snap-align: none !important;
+      }
+    }
   </style>
 </head>
 <body class="loading">
@@ -276,7 +299,7 @@
     </div>
     <nav class="main-nav-top">
       <div class="dropdown">
-        <a href="collection.html" class="dropdown-toggle">COLLECTION</a>
+        <a href="25.2.html" class="dropdown-toggle">COLLECTION</a>
         <div class="dropdown-menu">
           <a href="25.2.html">25.2</a>
         </div>
@@ -338,8 +361,9 @@
       </div>
     </section>
     
-    <section class="collection-section">
-      <div class="campaign-row campaign-row-fullvh">
+    <!-- 2x1 섹션 (Look 17과 Campaign 3) -->
+    <section class="collection-section look17-campaign-section">
+      <div class="campaign-row campaign-row-fullvh look17-section">
         <div class="campaign-box"><a href="look.html?id=17"><img src="images/25.2 looks/Look 17-1.png" alt="Look 17-1" loading="lazy" /></a></div>
         <div class="campaign-box"><img src="images/campaign/campaign 3.jpg" alt="Campaign 3" loading="lazy" /></div>
       </div>
@@ -398,7 +422,7 @@
 
   <footer class="site-footer-minimal">
     <div class="footer-minimal-container">
-      <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
+      <div class="footer-minimal-center">72 HTML 77 © <span class="footer-copyright"> </span> 2025</div>
       <div class="footer-minimal-right"><a href="#top" id="backToTop">back to top ↑</a></div>
     </div>
   </footer>
@@ -411,20 +435,33 @@
     const sections = document.querySelectorAll('.collection-section');
     const footer = document.querySelector('.site-footer-minimal');
 
-    // 이미지 밝기 감지 함수
+    // 이미지 밝기 감지 함수 (캐시 추가)
+    const brightnessCache = new Map();
+    
     function getImageBrightness(img) {
       return new Promise((resolve) => {
+        const src = img.src;
+        
+        // 캐시된 결과가 있으면 반환
+        if (brightnessCache.has(src)) {
+          resolve(brightnessCache.get(src));
+          return;
+        }
+        
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
-        canvas.width = 100;
-        canvas.height = 100;
-        ctx.drawImage(img, 0, 0, 100, 100);
-        const imageData = ctx.getImageData(0, 0, 100, 100).data;
+        canvas.width = 50;  // 100에서 50으로 줄여서 성능 향상
+        canvas.height = 50;
+        ctx.drawImage(img, 0, 0, 50, 50);
+        const imageData = ctx.getImageData(0, 0, 50, 50).data;
         let brightness = 0;
         for (let i = 0; i < imageData.length; i += 4) {
           brightness += (imageData[i] * 0.299 + imageData[i + 1] * 0.587 + imageData[i + 2] * 0.114);
         }
         brightness = brightness / (imageData.length / 4);
+        
+        // 결과를 캐시에 저장
+        brightnessCache.set(src, brightness);
         resolve(brightness);
       });
     }
@@ -491,14 +528,22 @@
               // 섹션 전환 시 부드러운 처리
               setTimeout(async () => {
                 if (section.querySelector('.campaign-row')) {
-                  const images = section.querySelectorAll('img');
-                  if (images.length > 0) {
-                    const brightness = await getImageBrightness(images[0]);
-                    const isDark = brightness < 128;
-                    if (isDark) {
-                      setMenuTheme('dark');
-                    } else {
-                      setMenuTheme('light');
+                  // Look 17 섹션 특별 처리 - 메뉴와 로고를 검은색으로 유지
+                  if (section.querySelector('.look17-section')) {
+                    setMenuTheme('light'); // 'dark'에서 'light'로 변경
+                  } else {
+                    const images = section.querySelectorAll('img');
+                    if (images.length > 0) {
+                      // 이미 로드된 이미지만 처리
+                      if (images[0].complete) {
+                        const brightness = await getImageBrightness(images[0]);
+                        const isDark = brightness < 128;
+                        if (isDark) {
+                          setMenuTheme('dark');
+                        } else {
+                          setMenuTheme('light');
+                        }
+                      }
                     }
                   }
                 } else if (section.querySelector('.full-image') || section.classList.contains('last-campaign')) {
@@ -555,6 +600,13 @@
 
     window.onload = function() {
       document.body.classList.remove('loading');
+      
+      // 페이지 로드 시 즉시 첫 번째 섹션의 테마 적용
+      const firstSection = document.querySelector('.collection-section');
+      if (firstSection && firstSection.querySelector('.full-image')) {
+        // 첫 번째 섹션이 캠페인 이미지인 경우 어두운 테마 적용
+        setMenuTheme('dark');
+      }
     };
   </script>
 </body>

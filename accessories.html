@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Accessories | HTML 7277</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 1179px)">
   <style>
     /* zoom-overlay, caption, grid, row 등 본문/기능 관련 스타일만 남기고, 헤더/네비 관련 스타일은 모두 삭제 */
     .zoom-overlay {
@@ -38,15 +39,17 @@
     }
     .caption {
       position: absolute;
-      bottom: 10%;
+      bottom: 5%;
       left: 0;
       width: 100%;
       text-align: center;
-      font-size: 10px;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 500;
       color: black;
       background: none;
       padding: 2px 0;
+      letter-spacing: 0.02em;
     }
     .accessories-main {
       background-color: #f6f6f6;
@@ -87,6 +90,14 @@
       gap: 8px;
       padding: 0;
       width: 100%;
+    }
+    
+    /* 모바일에서만 2x2 그리드 적용 */
+    @media (max-width: 768px) {
+      .accessories-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-rows: repeat(2, 1fr) !important;
+      }
     }
     .accessories-grid div {
       margin: 0;
@@ -129,16 +140,18 @@
     }
     .accessories-row-fullvh .caption {
       position: absolute;
-      bottom: 10%;
+      bottom: 12%;
       left: 0;
       width: 100%;
       text-align: center;
-      font-size: 10px;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 500;
       color: black;
       background: none;
       padding: 2px 0;
       z-index: 1;
+      letter-spacing: 0.02em;
     }
     .accessories-row-fullvh .half:first-child {
       background-color: #f6f6f6;
@@ -181,65 +194,34 @@
     .footer-minimal-right a {
       pointer-events: auto;
     }
-    /* iPhone 16 기준 모바일 최적화 */
-    @media (max-width: 1179px) {
-      .menu-header {
-        padding: 12px 16px;
-      }
-      .menu-header .logo img {
-        height: 14px;
-      }
-      .main-nav-top a,
-      .dropdown-toggle {
-        font-size: 10px;
-        margin-left: 16px;
-      }
-      .accessories-grid {
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        height: 100vh;
-        gap: 4px;
-        padding: 0 4px;
-      }
-      .accessories-grid img {
-        height: 100%;
-        object-fit: cover;
-      }
-      .accessories-row {
-        flex-direction: row;
-        gap: 6px;
-        padding: 0 8px;
-      }
-      .accessories-row .half {
-        flex: 1;
-      }
+    /* 모바일에서 액세서리 첫 섹션 레이아웃 변경 */
+    @media (max-width: 768px) {
       .accessories-row-fullvh {
-        flex-direction: column;
+        flex-direction: column-reverse !important; /* 순서 변경: 오른쪽(acc1)이 위로, 왼쪽(2x2)이 아래로 */
+        height: auto !important; /* 높이를 자동으로 조절 */
       }
+
       .accessories-row-fullvh .half {
-        width: 100vw;
-        height: 50vh;
+        width: 100% !important; /* 전체 너비 차지 */
+        height: auto !important; /* 높이를 자동으로 조절 */
       }
-      .caption {
-        font-size: 10px;
-        bottom: 8%;
+      
+      .accessories-row-fullvh .half:first-child { /* 2x2 그리드를 감싸는 div */
+        height: 100vw !important; /* 정사각형 형태 유지를 위해 너비와 동일하게 설정 */
+        margin-top: 0 !important;
       }
-      .accessories-row-fullvh .caption {
-        font-size: 10px;
-        bottom: 8%;
+
+      .accessories-row-fullvh .half:last-child { /* acc1 이미지를 감싸는 div */
+        height: 100vw !important; /* 정사각형 형태 유지를 위해 너비와 동일하게 설정 */
+        aspect-ratio: unset;
       }
-      .zoom-close {
-        top: 20px;
-        right: 24px;
-        font-size: 24px;
-      }
-      .site-footer-minimal,
-      .footer-minimal-container {
-        height: 48px;
-      }
-      .footer-minimal-center,
-      .footer-minimal-right a {
-        font-size: 10px;
+    }
+
+    /* 데스크톱에서 4x1 그리드 상단 정렬 */
+    @media (min-width: 769px) {
+      .acc-section.align-top {
+        justify-content: flex-start;
+        padding-top: 160px;
       }
     }
   </style>
@@ -253,7 +235,7 @@
     </div>
     <nav class="main-nav-top">
       <div class="dropdown">
-        <a href="collection.html" class="dropdown-toggle">COLLECTION</a>
+        <a href="25.2.html" class="dropdown-toggle">COLLECTION</a>
         <div class="dropdown-menu">
           <a href="25.2.html">25.2</a>
         </div>
@@ -266,43 +248,43 @@
 
   <main class="accessories-main">
     <section class="acc-section">
-      <div class="accessories-row accessories-row-fullvh" style="margin-top: 0;">
-        <div class="half" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; width: 100%; height: 50vw; max-height: 100vh; align-items: center; justify-items: center; margin-top: 32px;">
+      <div class="accessories-row accessories-row-fullvh">
+        <div class="half" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; width: 100%; height: 50vw; max-height: 100vh; align-items: center; justify-items: center;">
           <a href="acc.html?id=acc11" style="width:100%;height:100%;"><img src="images/acc/acc10.png" alt="acc10" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" /></a>
           <a href="acc.html?id=acc11" style="width:100%;height:100%;"><img src="images/acc/acc11.png" alt="acc11" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" /></a>
           <a href="acc.html?id=acc13" style="width:100%;height:100%;"><img src="images/acc/acc12.png" alt="acc12" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" /></a>
           <a href="acc.html?id=acc13" style="width:100%;height:100%;"><img src="images/acc/acc13.png" alt="acc13" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" /></a>
         </div>
-        <div class="half" onclick="window.location.href='acc.html?id=acc1'" style="height: 50vw; max-height: 100vh; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;">
+        <div class="half" onclick="window.location.href='acc.html?id=acc1'" style="height: 50vw; max-height: 100vh; display: flex; align-items: center; justify-content: center; cursor: pointer;">
           <img src="images/acc/acc1.png" alt="acc1" loading="lazy" style="width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;object-position:center;" />
-          <div class="caption">ACC 1</div>
+          <div class="caption">HTML Hanger Key Chain</div>
         </div>
       </div>
     </section>
 
-    <section class="acc-section">
+    <section class="acc-section align-top">
       <div class="accessories-grid">
-        <div onclick="window.location.href='acc.html?id=acc2'"><img src="images/acc/acc2.png" alt="acc2" loading="lazy" /><div class="caption">ACC 2</div></div>
-        <div onclick="window.location.href='acc.html?id=acc3'"><img src="images/acc/acc3.png" alt="acc3" loading="lazy" /><div class="caption">ACC 3</div></div>
-        <div onclick="window.location.href='acc.html?id=acc4'"><img src="images/acc/acc4.png" alt="acc4" loading="lazy" /><div class="caption">ACC 4</div></div>
-        <div onclick="window.location.href='acc.html?id=acc5'"><img src="images/acc/acc5.png" alt="acc5" loading="lazy" /><div class="caption">ACC 5</div></div>
+        <div onclick="window.location.href='acc.html?id=acc2'" style="cursor: pointer;"><img src="images/acc/acc2.png" alt="acc2" loading="lazy" /><div class="caption">Force Wallet</div></div>
+        <div onclick="window.location.href='acc.html?id=acc3'" style="cursor: pointer;"><img src="images/acc/acc3.png" alt="acc3" loading="lazy" /><div class="caption">L2 Pouch</div></div>
+        <div onclick="window.location.href='acc.html?id=acc4'" style="cursor: pointer;"><img src="images/acc/acc4.png" alt="acc4" loading="lazy" /><div class="caption">L1 Strapped Nappa Clutch</div></div>
+        <div onclick="window.location.href='acc.html?id=acc5'" style="cursor: pointer;"><img src="images/acc/acc5.png" alt="acc5" loading="lazy" /><div class="caption">M1 Smooth Calf Leather Handbag</div></div>
       </div>
     </section>
 
-    <section class="acc-section">
+    <section class="acc-section align-top">
       <div class="accessories-grid">
-        <div onclick="window.location.href='acc.html?id=acc6'"><img src="images/acc/acc6.png" alt="acc6" loading="lazy" /><div class="caption">ACC 6</div></div>
-        <div onclick="window.location.href='acc.html?id=acc7'"><img src="images/acc/acc7.png" alt="acc7" loading="lazy" /><div class="caption">ACC 7</div></div>
-        <div onclick="window.location.href='acc.html?id=acc8'"><img src="images/acc/acc8.png" alt="acc8" loading="lazy" /><div class="caption">ACC 8</div></div>
-        <div onclick="window.location.href='acc.html?id=acc9'"><img src="images/acc/acc9.png" alt="acc9" loading="lazy" /><div class="caption">ACC 9</div></div>
+        <div onclick="window.location.href='acc.html?id=acc6'" style="cursor: pointer;"><img src="images/acc/acc6.png" alt="acc6" loading="lazy" /><div class="caption">H1 Smooth Calf Leather Tote Bag</div></div>
+        <div onclick="window.location.href='acc.html?id=acc7'" style="cursor: pointer;"><img src="images/acc/acc7.png" alt="acc7" loading="lazy" /><div class="caption">H2 Grained Calf Leather Tote Bag</div></div>
+        <div onclick="window.location.href='acc.html?id=acc8'" style="cursor: pointer;"><img src="images/acc/acc8.png" alt="acc8" loading="lazy" /><div class="caption">H3 Spazzolato Leather Hand Bag</div></div>
+        <div onclick="window.location.href='acc.html?id=acc9'" style="cursor: pointer;"><img src="images/acc/acc9.png" alt="acc9" loading="lazy" /><div class="caption">H4 Smooth Calf Leather Bowling Bag</div></div>
       </div>
     </section>
 
     <section class="acc-section">
       <div class="accessories-row accessories-row-fullvh">
-        <div class="half">
+        <div class="half" onclick="window.location.href='acc.html?id=acc6'" style="cursor: pointer;">
           <img src="images/acc/acc6.png" alt="acc6" loading="lazy" style="width:82%;height:82%;object-fit:contain;" />
-          <div class="caption">ACC 6</div>
+          <div class="caption">H1 Smooth Calf Leather Tote Bag</div>
         </div>
         <div class="half">
           <img src="images/campaign/campaign 5.jpg" alt="Campaign 5" loading="lazy" />
@@ -315,9 +297,9 @@
         <div class="half">
           <img src="images/campaign/campaign 6.jpg" alt="Campaign 6" loading="lazy" />
         </div>
-        <div class="half">
+        <div class="half" onclick="window.location.href='acc.html?id=acc7'" style="cursor: pointer;">
           <img src="images/acc/acc7.png" alt="acc7" loading="lazy" style="width:82%;height:82%;object-fit:contain;" />
-          <div class="caption">ACC 7</div>
+          <div class="caption">H2 Grained Calf Leather Tote Bag</div>
         </div>
       </div>
     </section>
@@ -325,7 +307,7 @@
 
   <footer class="site-footer-minimal">
     <div class="footer-minimal-container">
-      <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
+      <div class="footer-minimal-center">72 HTML 77 © <span class="footer-copyright"> </span> 2025</div>
       <div class="footer-minimal-right"><a href="#top" id="backToTop">back to top ↑</a></div>
     </div>
   </footer>

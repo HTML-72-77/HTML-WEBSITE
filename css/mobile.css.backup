@@ -1,0 +1,642 @@
+/* 모바일 전용 CSS - 자동 반응형 */
+/* 태블릿 및 작은 데스크톱 */
+@media (max-width: 1024px) {
+  .menu-header {
+    padding: clamp(8px, 1.5vw, 16px) clamp(12px, 2vw, 20px) !important;
+  }
+  .menu-header .logo img {
+    height: clamp(14px, 2.5vw, 20px) !important;
+  }
+  .main-nav-top a,
+  .dropdown-toggle {
+    font-size: clamp(9px, 1.5vw, 12px) !important;
+    margin-left: clamp(12px, 2vw, 20px) !important;
+    padding: clamp(6px, 1vw, 10px) 0 !important;
+  }
+  /* 모바일에서 데스크톱 섹션 숨김 */
+  .desktop-only {
+    display: none !important;
+  }
+  /* 모바일 그리드 섹션 표시 */
+  .mobile-grid-section {
+    display: flex !important;
+  }
+  .collection-row {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)) !important;
+    height: 100vh !important;
+    padding: clamp(6px, 1vw, 12px) 0 !important;
+    gap: clamp(1px, 0.5vw, 3px) !important;
+    scroll-snap-align: start !important;
+  }
+  .look-box {
+    padding: clamp(1px, 0.5vw, 3px) !important;
+  }
+  .look-box img {
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .campaign-row {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    /* 모바일에서 스크롤 스냅 제거 */
+    scroll-snap-align: none !important;
+  }
+  .campaign-box {
+    padding: clamp(12px, 2vw, 20px) clamp(6px, 1.5vw, 12px) !important;
+    flex: 0 0 auto !important;
+  }
+  .campaign-box img {
+    height: calc(100vh - clamp(40px, 8vw, 80px)) !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+}
+
+/* 모바일 가로 */
+@media (max-width: 768px) {
+  .menu-header {
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 16px !important;
+    gap: 0 !important;
+  }
+  
+  .menu-header .logo {
+    margin-bottom: 0 !important;
+  }
+  
+  .main-nav-top {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 16px !important;
+    justify-content: center !important;
+  }
+  
+  .main-nav-top a,
+  .dropdown-toggle {
+    margin-left: 0 !important;
+    font-size: 11px !important;
+    padding: 6px 0 !important;
+  }
+  
+  .dropdown {
+    margin-left: 0 !important;
+  }
+  
+  .dropdown-menu {
+    position: static !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 4px 0 !important;
+    margin-top: 4px !important;
+  }
+  
+  .dropdown-menu a {
+    padding: 4px 0 !important;
+    text-align: center !important;
+  }
+  
+  /* 4x3 그리드들과 헤더 사이 여백 */
+  .mobile-grid-section {
+    /* 이 부분은 25.2.html에서 직접 제어하므로 주석 처리 또는 삭제 */
+    /* margin-top: 160px !important; */
+  }
+  
+  /* 데스크톱 전용 섹션들 (4x3 그리드) */
+  .desktop-only {
+    /* 이 부분은 25.2.html에서 직접 제어하므로 주석 처리 또는 삭제 */
+    /* margin-top: 160px !important; */
+  }
+  
+  /* 2x1 섹션 (캠페인 3) - 여백 제거 */
+  .campaign-row {
+    /* 이 부분은 25.2.html에서 직접 제어하므로 주석 처리 또는 삭제 */
+    /* margin-top: 0 !important; */
+  }
+  
+  .collection-row {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)) !important;
+    grid-template-rows: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    padding: clamp(4px, 1vw, 12px) 0 !important;
+    gap: clamp(1px, 0.3vw, 2px) !important;
+    /* 4x3 그리드 이미지 크기 줄여서 헤더 오버랩 방지 */
+    height: calc(100vh - 180px) !important;
+    margin-top: 20px !important;
+    /* 모바일에서 스크롤 스냅 제거 */
+    scroll-snap-align: none !important;
+  }
+  .look-box {
+    padding: clamp(1px, 0.5vw, 3px) !important;
+  }
+  .look-box img {
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .campaign-row {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    /* 모바일에서 스크롤 스냅 제거 */
+    scroll-snap-align: none !important;
+  }
+  .campaign-box {
+    padding: clamp(12px, 2vw, 20px) clamp(6px, 1.5vw, 12px) !important;
+    flex: 0 0 auto !important;
+  }
+  .campaign-box img {
+    height: calc(100vh - clamp(40px, 8vw, 80px)) !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+  .site-footer-minimal,
+  .footer-minimal-container {
+    height: clamp(44px, 7vw, 64px) !important;
+  }
+  .footer-minimal-center,
+  .footer-minimal-right a {
+    font-size: clamp(9px, 1.8vw, 14px) !important;
+  }
+  .landing-logo {
+    top: 35% !important;
+  }
+  
+  .landing-logo img {
+    height: clamp(12px, 4vw, 16px) !important;
+  }
+  
+  .main-nav {
+    top: calc(35% + clamp(24px, 6vw, 36px)) !important;
+  }
+  
+  .main-nav a {
+    font-size: clamp(9px, 2.5vw, 11px) !important;
+    margin: 0 clamp(8px, 2vw, 16px) !important;
+    padding: clamp(4px, 1vw, 8px) 0 !important;
+  }
+  
+  .background-video {
+    object-position: center center !important;
+  }
+  
+  .main-nav a {
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+    transition: opacity 0.2s ease !important;
+  }
+  
+  .main-nav a:active {
+    opacity: 0.7 !important;
+  }
+  
+  .menu-header .logo {
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+  }
+  
+  .main-nav-top a,
+  .dropdown-toggle {
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+    transition: opacity 0.2s ease !important;
+  }
+  
+  .main-nav-top a:active,
+  .dropdown-toggle:active {
+    opacity: 0.7 !important;
+  }
+  
+  html {
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    text-rendering: optimizeLegibility !important;
+  }
+  
+  /* 모바일에서 비디오 최적화 */
+  .background-video {
+    will-change: transform !important;
+  }
+  
+  /* 모바일에서 이미지 최적화 */
+  img {
+    image-rendering: -webkit-optimize-contrast !important;
+    image-rendering: crisp-edges !important;
+  }
+  
+  /* 모바일 로딩 애니메이션 */
+  .landing-logo {
+    animation: fadeInUp 1s ease-out 0.3s both !important;
+  }
+  
+  .main-nav {
+    animation: fadeInUp 1s ease-out 0.6s both !important;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* 모바일에서 부드러운 페이지 전환 */
+  a {
+    transition: opacity 0.2s ease !important;
+  }
+  
+  a:active {
+    opacity: 0.7 !important;
+  }
+  
+  /* 모바일 접근성 개선 */
+  a:focus,
+  button:focus,
+  input:focus,
+  textarea:focus {
+    outline: 2px solid #000 !important;
+    outline-offset: 2px !important;
+    border-radius: 2px !important;
+  }
+  
+  /* 터치 영역 최소 크기 보장 */
+  .main-nav a,
+  .menu-header .logo,
+  .main-nav-top a,
+  .dropdown-toggle {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+  
+  /* 모바일에서 스크린 리더 지원 */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  
+  /* 액세서리 그리드 최적화 */
+  .accessories-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(2, 1fr) !important;
+    gap: clamp(4px, 1vw, 8px) !important;
+    padding: clamp(8px, 2vw, 16px) !important;
+  }
+  
+  .accessories-grid img {
+    aspect-ratio: 1/1 !important;
+    object-fit: cover !important;
+  }
+  
+  /* 모바일에서 캠페인 섹션 최적화 */
+  .campaign-row-fullvh {
+    flex-direction: column !important;
+    height: 100vh !important;
+  }
+  
+  .campaign-row-fullvh .campaign-box {
+    width: 100% !important;
+    height: 50vh !important;
+  }
+  
+  .campaign-row-fullvh .campaign-box img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+  
+  /* 모바일에서 25.2 페이지 그리드 레이아웃 수정 */
+  /* 25.2 페이지 그리드: HTML 내부 스타일에서 처리됨 */
+  /* - 첫 번째 4x3 그리드: .mobile-grid-section:first-of-type .collection-row */
+  /* - 두 번째 4x3 그리드: .mobile-grid-section:last-of-type .collection-row */
+  
+  /* 액세서리 페이지 그리드: HTML 내부 스타일에서 처리됨 */
+  /* - 2x2 그리드: .accessories-grid */
+  
+  /* look.html 모바일 최적화 */
+  .look-images-scroll {
+    flex-direction: column !important;
+    height: auto !important;
+    margin-left: 0 !important;
+    margin-top: 60px !important;
+    padding: 0 16px !important;
+  }
+  
+  .look-thumbnails {
+    width: 100% !important;
+    min-width: auto !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 16px 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    overflow-x: auto !important;
+  }
+  
+  .look-thumbnails img {
+    width: 60px !important;
+    height: 80px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  #lookGallery {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 16px 0 !important;
+  }
+  
+  #lookGallery img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 70vh !important;
+    object-fit: contain !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .look-desc {
+    padding-left: 0 !important;
+    margin-top: 0 !important;
+    padding: 16px 0 32px 0 !important;
+  }
+  
+  .look-desc h2 {
+    font-size: 16px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .look-desc p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* acc.html 모바일 최적화 */
+  .acc-images-scroll {
+    flex-direction: column !important;
+    height: auto !important;
+    margin-left: 0 !important;
+    margin-top: 60px !important;
+    padding: 0 16px !important;
+  }
+  
+  .acc-thumbnails {
+    width: 100% !important;
+    min-width: auto !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 16px 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    overflow-x: auto !important;
+  }
+  
+  .acc-thumbnails img {
+    width: 60px !important;
+    height: 80px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  #accGallery {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 16px 0 !important;
+  }
+  
+  #accGallery img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 70vh !important;
+    object-fit: contain !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .acc-desc {
+    padding-left: 0 !important;
+    margin-top: 0 !important;
+    padding: 16px 0 32px 0 !important;
+  }
+  
+  .acc-desc h2 {
+    font-size: 16px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .acc-desc p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* 작은 모바일 (자동 조정) */
+@media (max-width: 480px) {
+  .menu-header {
+    padding: 16px 12px !important;
+    gap: 0 !important;
+  }
+  
+  .menu-header .logo {
+    margin-bottom: 0 !important;
+  }
+  
+  .main-nav-top {
+    gap: 12px !important;
+  }
+  
+  .main-nav-top a,
+  .dropdown-toggle {
+    font-size: 10px !important;
+    padding: 5px 0 !important;
+  }
+  
+  .dropdown-menu {
+    padding: 2px 0 !important;
+    margin-top: 2px !important;
+  }
+  
+  .dropdown-menu a {
+    padding: 2px 0 !important;
+    font-size: 9px !important;
+  }
+  
+  /* 4x3 그리드들과 헤더 사이 여백 - 작은 모바일 */
+  .mobile-grid-section {
+    /* 이 부분은 25.2.html에서 직접 제어하므로 주석 처리 또는 삭제 */
+    /* margin-top: 160px !important; */
+  }
+  
+  .desktop-only {
+    /* 이 부분은 25.2.html에서 직접 제어하므로 주석 처리 또는 삭제 */
+    /* margin-top: 160px !important; */
+  }
+  
+  .campaign-row {
+    /* 이 부분은 25.2.html에서 직접 제어하므로 주석 처리 또는 삭제 */
+    /* margin-top: 160px !important; */
+  }
+  
+  .collection-row {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)) !important;
+    grid-template-rows: repeat(auto-fit, minmax(80px, 1fr)) !important;
+    padding: clamp(4px, 1vw, 12px) 0 !important;
+    gap: clamp(1px, 0.3vw, 2px) !important;
+    /* 4x3 그리드 이미지 크기 줄여서 헤더 오버랩 방지 */
+    height: calc(100vh - 180px) !important;
+    margin-top: 20px !important;
+    /* 모바일에서 스크롤 스냅 제거 */
+    scroll-snap-align: none !important;
+  }
+  .look-box {
+    padding: clamp(1px, 0.3vw, 2px) !important;
+  }
+  .campaign-row {
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    /* 모바일에서 스크롤 스냅 제거 */
+    scroll-snap-align: none !important;
+  }
+  .campaign-box {
+    padding: clamp(8px, 1.5vw, 16px) clamp(4px, 1vw, 8px) !important;
+    flex: 0 0 auto !important;
+  }
+  .campaign-box img {
+    height: calc(100vh - clamp(30px, 6vw, 60px)) !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+  .landing-logo {
+    top: 30% !important;
+  }
+  
+  .landing-logo img {
+    height: clamp(10px, 3.5vw, 14px) !important;
+  }
+  
+  .main-nav {
+    top: calc(30% + clamp(20px, 5vw, 32px)) !important;
+  }
+  
+  .main-nav a {
+    font-size: clamp(8px, 2.2vw, 10px) !important;
+    margin: 0 clamp(6px, 1.5vw, 12px) !important;
+    padding: clamp(3px, 0.8vw, 6px) 0 !important;
+  }
+  
+  /* look.html 작은 모바일 최적화 */
+  .look-images-scroll {
+    padding: 0 12px !important;
+    margin-top: 50px !important;
+  }
+  
+  .look-thumbnails {
+    gap: 6px !important;
+    padding: 12px 0 !important;
+  }
+  
+  .look-thumbnails img {
+    width: 50px !important;
+    height: 67px !important;
+  }
+  
+  #lookGallery {
+    padding: 12px 0 !important;
+  }
+  
+  #lookGallery img {
+    max-height: 60vh !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .look-desc {
+    padding: 12px 0 24px 0 !important;
+  }
+  
+  .look-desc h2 {
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .look-desc p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* acc.html 작은 모바일 최적화 */
+  .acc-images-scroll {
+    padding: 0 12px !important;
+    margin-top: 50px !important;
+  }
+  
+  .acc-thumbnails {
+    gap: 6px !important;
+    padding: 12px 0 !important;
+  }
+  
+  .acc-thumbnails img {
+    width: 50px !important;
+    height: 67px !important;
+  }
+  
+  #accGallery {
+    padding: 12px 0 !important;
+  }
+  
+  #accGallery img {
+    max-height: 60vh !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .acc-desc {
+    padding: 12px 0 24px 0 !important;
+  }
+  
+  .acc-desc h2 {
+    font-size: 15px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .acc-desc p {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+.look17-campaign-section {
+  margin-top: 0 !important;
+} 

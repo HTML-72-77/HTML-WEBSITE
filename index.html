@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#f6f6f6" />
   <title>HTML 7277</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 1179px)">
 </head>
 <body>
   <!-- 배경 영상 -->
@@ -19,10 +24,68 @@
 
   <!-- 네비게이션 메뉴 -->
   <nav class="main-nav">
-    <a href="collection.html">COLLECTION</a>
+    <a href="25.2.html">COLLECTION</a>
     <a href="accessories.html">ACCESSORIES</a>
     <a href="about.html">ABOUT</a>
     <a href="contact.html">CONTACT</a>
   </nav>
+
+  <!-- 모바일 최적화 JavaScript -->
+  <script>
+    // 모바일 터치 최적화
+    document.addEventListener('DOMContentLoaded', function() {
+      // 터치 이벤트 최적화
+      let touchStartY = 0;
+      let touchEndY = 0;
+      
+      document.addEventListener('touchstart', function(e) {
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+      
+      document.addEventListener('touchend', function(e) {
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }, { passive: true });
+      
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartY - touchEndY;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+          // 스와이프 제스처 처리
+          if (diff > 0) {
+            // 위로 스와이프
+            console.log('Swipe up detected');
+          } else {
+            // 아래로 스와이프
+            console.log('Swipe down detected');
+          }
+        }
+      }
+      
+      // 모바일에서 더블탭 줌 방지
+      let lastTouchEnd = 0;
+      document.addEventListener('touchend', function(event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+          event.preventDefault();
+        }
+        lastTouchEnd = now;
+      }, false);
+      
+      // 모바일에서 비디오 최적화
+      const video = document.querySelector('.background-video');
+      if (video) {
+        video.addEventListener('loadedmetadata', function() {
+          // 모바일에서 비디오 자동 재생 최적화
+          if (window.innerWidth <= 768) {
+            video.play().catch(function(error) {
+              console.log('Video autoplay failed:', error);
+            });
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

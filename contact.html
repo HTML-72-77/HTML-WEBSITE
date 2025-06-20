@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact | HTML 7277</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 1179px)">
   <style>
     body {
       margin: 0;
@@ -13,53 +14,101 @@
       display: flex;
       flex-direction: column;
     }
-    .contact-content {
+
+    .contact-main {
       flex: 1;
-      padding: 160px 48px 48px 48px;
+      padding: calc(45vh - 60px) 48px 48px 48px;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease-out forwards;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
     }
-    .site-footer-minimal {
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-main h1 {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      position: sticky;
+      top: calc(45vh - 60px);
+    }
+
+    .contact-text {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      padding-top: 4px;
+    }
+
+    .contact-text p {
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInText 0.5s ease-out forwards;
+    }
+
+    .contact-text p:nth-child(1) { animation-delay: 0.2s; }
+    .contact-text p:nth-child(2) { animation-delay: 0.4s; }
+    .contact-text p:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes fadeInText {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-text a {
+      color: #000;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .contact-text a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
       width: 100%;
-      background-color: transparent;
-      margin-top: auto;
+      height: 1px;
+      background-color: #000;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
     }
+
+    .contact-text a:hover {
+      color: #666;
+    }
+
+    .contact-text a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .site-footer-minimal {
+      font-size: 11px;
+    }
+
     .menu-header {
       background-color: transparent !important;
-    }
-    /* iPhone 16 기준 모바일 최적화 */
-    @media (max-width: 1179px) {
-      .menu-header {
-        padding: 12px 16px;
-      }
-      .menu-header .logo img {
-        height: 14px;
-      }
-      .main-nav-top a,
-      .dropdown-toggle {
-        font-size: 10px;
-        margin-left: 16px;
-      }
-      .contact-content {
-        padding: 140px 20px 40px 20px;
-      }
-      .contact-main h1 {
-        font-size: 20px;
-        margin-bottom: 18px;
-      }
-      .contact-main p {
-        font-size: 15px;
-        line-height: 1.8;
-        margin-bottom: 14px;
-      }
-      .site-footer-minimal,
-      .footer-minimal-container {
-        height: 48px;
-      }
-      .footer-minimal-center {
-        font-size: 10px;
-      }
-      .footer-minimal-right a {
-        font-size: 10px;
-      }
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out 0.2s forwards;
     }
   </style>
 </head>
@@ -70,7 +119,7 @@
     </div>
     <nav class="main-nav-top">
       <div class="dropdown">
-        <a href="collection.html" class="dropdown-toggle">COLLECTION</a>
+        <a href="25.2.html" class="dropdown-toggle">COLLECTION</a>
         <div class="dropdown-menu">
           <a href="25.2.html">25.2</a>
         </div>
@@ -82,25 +131,25 @@
   </header>
 
   <main class="contact-main">
-  <h1>Contact</h1>
-  <div class="contact-text">
-    <p>For inquiries, collaborations, or press:</p>
-    <p>Email: <a href="mailto:info@html7277.com">info@html7277.com</a></p>
-    <p>Instagram: <a href="https://instagram.com/html_72_77" target="_blank">@html_72_77</a></p>
-  </div>
-</main>
+    <h1>Contact</h1>
+    <div class="contact-text">
+      <p>For inquiries, collaborations, or press</p>
+      <p>Email: <a href="mailto:info@html7277.com">info@html7277.com</a></p>
+      <p>Instagram: <a href="https://instagram.com/html_72_77" target="_blank">@html_72_77</a></p>
+    </div>
+  </main>
 
-<footer class="site-footer-minimal">
-  <div class="footer-minimal-container">
-    <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
-    <div class="footer-minimal-right"><a href="#top" id="backToTop">back to top ↑</a></div>
-  </div>
-</footer>
-<script>
-  document.getElementById('backToTop').addEventListener('click', function(e) {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
+  <footer class="site-footer-minimal" style="opacity: 0; animation: fadeIn 0.8s ease-out 0.8s forwards;">
+    <div class="footer-minimal-container">
+      <div class="footer-minimal-center">72 HTML 77 © <span class="footer-copyright"> </span> 2025</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('backToTop').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>

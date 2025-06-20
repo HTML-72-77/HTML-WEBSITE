@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Accessory Detail | HTML 7277</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 1179px)">
   <style>
     html, body {
       margin: 0;
@@ -222,235 +223,6 @@
       text-transform: uppercase;
       pointer-events: none;
     }
-    @media (max-width: 900px) {
-      main {
-        flex-direction: column;
-        margin-top: 0;
-      }
-      .acc-images-scroll {
-        width: 100vw;
-        height: 60vw;
-        max-height: 80vh;
-        margin-top: 0;
-      }
-      #accGallery img {
-        height: 60vw;
-        max-height: 80vh;
-      }
-      .acc-desc {
-        width: 100vw;
-        padding: 32px 16px 0 16px;
-        min-height: auto;
-      }
-    }
-    @media (max-width: 768px) {
-      .menu-header {
-        padding: 16px 20px;
-      }
-      .menu-header .logo img {
-        height: 14px;
-      }
-      .main-nav-top a,
-      .dropdown-toggle {
-        font-size: 10px;
-        margin-left: 20px;
-      }
-      .acc-thumbnails {
-        width: 60px;
-        min-width: 60px;
-        padding: 12px 0;
-        gap: 8px;
-        margin-right: 12px;
-      }
-      .acc-thumbnails img {
-        width: 52px;
-        height: 70px;
-      }
-      .acc-images-scroll {
-        margin-left: 20px;
-      }
-      #accGallery {
-        margin-left: 20px;
-      }
-      .acc-desc {
-        padding-left: 80px;
-        margin-top: 20vh;
-      }
-      .acc-desc h2 {
-        font-size: 16px;
-        margin-bottom: 12px;
-      }
-      .acc-desc p {
-        font-size: 13px;
-        line-height: 1.6;
-      }
-    }
-    @media (max-width: 600px) {
-      .menu-header {
-        padding: 12px 16px;
-      }
-      .menu-header .logo img {
-        height: 12px;
-      }
-      .main-nav-top a,
-      .dropdown-toggle {
-        font-size: 9px;
-        margin-left: 16px;
-      }
-      .acc-thumbnails {
-        width: 50px;
-        min-width: 50px;
-        padding: 8px 0;
-        gap: 6px;
-        margin-right: 8px;
-      }
-      .acc-thumbnails img {
-        width: 44px;
-        height: 60px;
-      }
-      .acc-images-scroll {
-        margin-left: 16px;
-      }
-      #accGallery {
-        margin-left: 16px;
-      }
-      .acc-desc {
-        padding-left: 70px;
-        margin-top: 15vh;
-      }
-      .acc-desc h2 {
-        font-size: 15px;
-        margin-bottom: 10px;
-      }
-      .acc-desc p {
-        font-size: 12px;
-        line-height: 1.5;
-      }
-      .site-footer-minimal, .footer-minimal-container {
-        height: 48px;
-      }
-      .footer-minimal-center {
-        font-size: 10px;
-      }
-    }
-    @media (max-width: 480px) {
-      .menu-header {
-        padding: 10px 12px;
-      }
-      .menu-header .logo img {
-        height: 10px;
-      }
-      .main-nav-top a,
-      .dropdown-toggle {
-        font-size: 8px;
-        margin-left: 12px;
-      }
-      .acc-thumbnails {
-        width: 40px;
-        min-width: 40px;
-        padding: 6px 0;
-        gap: 4px;
-        margin-right: 6px;
-      }
-      .acc-thumbnails img {
-        width: 36px;
-        height: 48px;
-      }
-      .acc-images-scroll {
-        margin-left: 12px;
-      }
-      #accGallery {
-        margin-left: 12px;
-      }
-      .acc-desc {
-        padding-left: 60px;
-        margin-top: 10vh;
-      }
-      .acc-desc h2 {
-        font-size: 14px;
-        margin-bottom: 8px;
-      }
-      .acc-desc p {
-        font-size: 11px;
-        line-height: 1.4;
-      }
-    }
-    /* iPhone 16 기준 최적화 */
-    @media (max-width: 1179px) {
-      .menu-header {
-        padding: 12px 16px;
-      }
-      .menu-header .logo img {
-        height: 14px;
-      }
-      .main-nav-top a,
-      .dropdown-toggle {
-        font-size: 10px;
-        margin-left: 16px;
-      }
-      .acc-thumbnails {
-        width: 50px;
-        min-width: 50px;
-        padding: 8px 0;
-        gap: 6px;
-        margin-right: 8px;
-      }
-      .acc-thumbnails img {
-        width: 44px;
-        height: 60px;
-      }
-      .acc-images-scroll {
-        margin-left: 12px;
-      }
-      #accGallery {
-        margin-left: 12px;
-      }
-      .acc-desc {
-        padding-left: 70px;
-        margin-top: 15vh;
-      }
-      .acc-desc h2 {
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-      .acc-desc p {
-        font-size: 13px;
-        line-height: 1.5;
-      }
-      .site-footer-minimal, .footer-minimal-container {
-        height: 48px;
-      }
-      .footer-minimal-center {
-        font-size: 10px;
-      }
-      .acc-thumbnails img,
-      #accGallery img {
-        -webkit-tap-highlight-color: transparent;
-        touch-action: manipulation;
-      }
-      
-      .acc-thumbnails img {
-        cursor: pointer;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-      
-      #accGallery {
-        -webkit-overflow-scrolling: touch;
-        scroll-behavior: smooth;
-      }
-      
-      .image-modal {
-        -webkit-overflow-scrolling: touch;
-      }
-      
-      .close-modal {
-        -webkit-tap-highlight-color: transparent;
-        touch-action: manipulation;
-      }
-    }
     .acc-images-scroll,
     #accGallery,
     #accGallery img {
@@ -505,7 +277,6 @@
     .close-modal:hover {
       opacity: 0.7;
     }
-    /* 이미지 클릭 가능 표시 */
     #accGallery img {
       cursor: pointer;
     }
@@ -520,7 +291,7 @@
     </div>
     <nav class="main-nav-top">
       <div class="dropdown">
-        <span class="dropdown-toggle dropdown-toggle-text">COLLECTION</span>
+        <a href="25.2.html" class="dropdown-toggle">COLLECTION</a>
         <div class="dropdown-menu">
           <a href="25.2.html">25.2</a>
         </div>
@@ -541,7 +312,7 @@
   </main>
   <footer class="site-footer-minimal">
     <div class="footer-minimal-container">
-      <div class="footer-minimal-center">72 HTML 77 <span class="footer-copyright">&copy;</span> 2025</div>
+      <div class="footer-minimal-center">72 HTML 77 © <span class="footer-copyright"> </span> 2025</div>
     </div>
   </footer>
   
@@ -560,93 +331,94 @@
           "images/acc/acc1.png"
         ],
         title: "HTML Hanger Key Chain",
-        description: "D-ring hanger key chain<br>Smooth calf leather<br>HT252AC001"
+        description: "D-ring hanger key chain<br>Smooth calf leather / Silver Black<br>HT252AC001"
       },
       acc2: {
         images: [
           "images/acc/acc2.png"
         ],
-        title: "ACC 2",
-        description: "Description for ACC 2."
+        title: "Force Wallet",
+        description: "Force detail card holder<br>Nappa leather / Black<br>HT252AC002"
       },
       acc3: {
         images: [
           "images/acc/acc3.png"
         ],
-        title: "ACC 3",
-        description: "Description for ACC 3."
+        title: "L2 Pouch",
+        description: "Zipper pouch with leather pull<br>Calf leather / Black<br>HT252AC003"
       },
       acc4: {
         images: [
           "images/acc/acc4.png"
         ],
-        title: "ACC 4",
-        description: "Description for ACC 4."
+        title: "L1 Strapped Nappa Clutch",
+        description: "Strap opening clutch<br>Nappa leather / Black<br>HT252BG004"
       },
       acc5: {
         images: [
           "images/acc/acc5.png"
         ],
-        title: "ACC 5",
-        description: "Description for ACC 5."
+        title: "M1 Smooth Calf Leather Handbag",
+        description: "Zipper opening handbag<br>Smooth calf leather / Black<br>HT252BG003"
       },
       acc6: {
         images: [
           "images/acc/acc6.png"
         ],
-        title: "ACC 6",
-        description: "Description for ACC 6."
+        title: "H1 Smooth Calf Leather Tote Bag",
+        description: "Leather tote bag with pipe handle<br>Smooth calf leather / Black<br>HT252BG001"
       },
       acc7: {
         images: [
           "images/acc/acc7.png"
         ],
-        title: "ACC 7",
-        description: "Description for ACC 7."
+        title: "H2 Grained Calf Leather Tote Bag",
+        description: "Leather tote bag<br>Elephant embossed grained calf leather / Asphalt Gray<br>HT252BG002"
       },
       acc8: {
         images: [
           "images/acc/acc8.png"
         ],
-        title: "ACC 8",
-        description: "Description for ACC 8."
+        title: "H3 Spazzolato Leather Hand Bag",
+        description: "Leather hand bag with pipe handle<br>Spazzolato leather / Black<br>HT252BG005"
       },
       acc9: {
         images: [
           "images/acc/acc9.png"
         ],
-        title: "ACC 9",
-        description: "Description for ACC 9."
+        title: "H4 Smooth Calf Leather Bowling Bag",
+        description: "Leather bowling bag<br>Smooth calf leather / Olive<br>HT252BG006"
       },
       acc10: {
         images: [
           "images/acc/acc10.png"
         ],
-        title: "ACC 10",
-        description: "Description for ACC 10."
+        title: "72 Leather Belt",
+        description: "Medium length leather belt with metal keeper<br>Veg tan leather / Black<br>HT252BT001"
       },
       acc11: {
         images: [
           "images/acc/acc11.png"
         ],
-        title: "ACC 11",
-        description: "Description for ACC 11."
+        title: "72 Leather Belt",
+        description: "Medium length leather belt with metal keeper<br>Veg tan leather / Black<br>HT252BT001"
       },
       acc12: {
         images: [
           "images/acc/acc12.png"
         ],
-        title: "ACC 12",
-        description: "Description for ACC 12."
+        title: "77 Leather Belt",
+        description: "Long length leather belt with leather keeper<br>Veg tan leather / Black<br>HT252BT002"
       },
       acc13: {
         images: [
           "images/acc/acc13.png"
         ],
-        title: "ACC 13",
-        description: "Description for ACC 13."
+        title: "77 Leather Belt",
+        description: "Long length leather belt with leather keeper<br>Veg tan leather / Black<br>HT252BT002"
       }
     };
+
     function renderAcc() {
       const params = new URLSearchParams(window.location.search);
       const id = params.get('id');
@@ -654,14 +426,28 @@
       const gallery = document.getElementById('accGallery');
       const thumbnails = document.getElementById('accThumbnails');
       const descBox = document.getElementById('accDescBox');
+      
       if (!acc) {
         gallery.innerHTML = '<p>Accessory not found.</p>';
         thumbnails.innerHTML = '';
         descBox.innerHTML = '';
         return;
       }
-      gallery.innerHTML = acc.images.map((src, i) => `<img src="${src}" alt="${acc.title}" data-index="${i}">`).join('');
-      thumbnails.innerHTML = acc.images.map((src, i) => `<img src="${src}" alt="${acc.title} thumbnail" data-index="${i}">`).join('');
+      
+      // acc11과 acc13의 경우 각각 acc10과 acc12의 이미지도 갤러리에 추가
+      let galleryImages = [...acc.images];
+      let thumbnailImages = [...acc.images];
+      
+      if (id === 'acc11') {
+        galleryImages = [...acc.images, "images/acc/acc10.png"];
+        thumbnailImages = [...acc.images, "images/acc/acc10.png"];
+      } else if (id === 'acc13') {
+        galleryImages = [...acc.images, "images/acc/acc12.png"];
+        thumbnailImages = [...acc.images, "images/acc/acc12.png"];
+      }
+      
+      gallery.innerHTML = galleryImages.map((src, i) => `<img src="${src}" alt="${acc.title}" data-index="${i}">`).join('');
+      thumbnails.innerHTML = thumbnailImages.map((src, i) => `<img src="${src}" alt="${acc.title} thumbnail" data-index="${i}">`).join('');
       descBox.innerHTML = `<h2>${acc.title}</h2><p>${acc.description}</p>`;
       
       // 썸네일 클릭 이벤트
@@ -677,20 +463,26 @@
         thumb.addEventListener('click', () => {
           // 모바일에서는 헤더 높이를 동적으로 계산
           const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
-          gallery.scrollTo({
-            top: galleryImgs[idx].offsetTop - headerHeight,
-            behavior: 'smooth'
-          });
+          
+          if (galleryImgs[idx]) {
+            gallery.scrollTo({
+              top: galleryImgs[idx].offsetTop - headerHeight,
+              behavior: 'smooth'
+            });
+          }
         });
         
         // 터치 이벤트 추가 (모바일용)
         thumb.addEventListener('touchend', (e) => {
           e.preventDefault();
           const headerHeight = window.innerWidth <= 1179 ? 44 : 64;
-          gallery.scrollTo({
-            top: galleryImgs[idx].offsetTop - headerHeight,
-            behavior: 'smooth'
-          });
+          
+          if (galleryImgs[idx]) {
+            gallery.scrollTo({
+              top: galleryImgs[idx].offsetTop - headerHeight,
+              behavior: 'smooth'
+            });
+          }
         });
       });
       
@@ -716,12 +508,12 @@
           // 모바일에서는 더 정확한 위치 계산
           if (rect.top < (window.innerHeight / 2) + headerHeight) found = idx;
         });
+        
         thumbImgs.forEach(t => t.classList.remove('active'));
         if (thumbImgs[found]) thumbImgs[found].classList.add('active');
       });
     }
-    
-    // 모달 관련 함수들
+
     function openModal(imageSrc) {
       const modal = document.getElementById('imageModal');
       const modalImg = document.getElementById('modalImage');
@@ -731,7 +523,7 @@
         modal.classList.add('show');
       }, 10);
     }
-    
+
     function closeModal() {
       const modal = document.getElementById('imageModal');
       modal.classList.remove('show');
@@ -739,22 +531,20 @@
         modal.style.display = 'none';
       }, 300);
     }
-    
-    // 모달 닫기 이벤트
+
     document.querySelector('.close-modal').addEventListener('click', closeModal);
     document.getElementById('imageModal').addEventListener('click', function(e) {
       if (e.target === this) {
         closeModal();
       }
     });
-    
-    // ESC 키로 모달 닫기
+
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         closeModal();
       }
     });
-    
+
     renderAcc();
   </script>
 </body>
