@@ -332,10 +332,11 @@
   .campaign-row-fullvh .campaign-box {
     width: 100% !important;
     height: 50vh !important;
+    padding: 5px !important;
   }
   
   .campaign-row-fullvh .campaign-box img {
-    height: 100% !important;
+    height: calc(100% - 10px) !important;
     width: 100% !important;
     object-fit: contain !important;
   }
