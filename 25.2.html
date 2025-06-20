@@ -130,12 +130,13 @@
       width: 100%;
       height: calc(100vh - 120px);
       display: block;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
       loading: lazy;
     }
     .campaign-box:not(:first-child) img {
       height: 100vh;
+      object-fit: contain;
     }
     .campaign-box:first-child a {
       margin-right: 0;
