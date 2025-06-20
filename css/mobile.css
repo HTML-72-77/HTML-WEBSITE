@@ -46,8 +46,6 @@
     align-items: center !important;
     width: 100vw !important;
     height: 100vh !important;
-    /* 모바일에서 스크롤 스냅 제거 */
-    scroll-snap-align: none !important;
   }
   .campaign-box {
     padding: clamp(12px, 2vw, 20px) clamp(6px, 1.5vw, 12px) !important;
@@ -136,10 +134,8 @@
     padding: clamp(4px, 1vw, 12px) 0 !important;
     gap: clamp(1px, 0.3vw, 2px) !important;
     /* 4x3 그리드 이미지 크기 줄여서 헤더 오버랩 방지 */
-    height: calc(100vh - 180px) !important;
-    margin-top: 20px !important;
-    /* 모바일에서 스크롤 스냅 제거 */
-    scroll-snap-align: none !important;
+    height: 100vh !important;
+    margin-top: 0 !important;
   }
   .look-box {
     padding: clamp(1px, 0.5vw, 3px) !important;
@@ -154,8 +150,6 @@
     align-items: center !important;
     width: 100vw !important;
     height: 100vh !important;
-    /* 모바일에서 스크롤 스냅 제거 */
-    scroll-snap-align: none !important;
   }
   .campaign-box {
     padding: clamp(12px, 2vw, 20px) clamp(6px, 1.5vw, 12px) !important;
@@ -244,6 +238,9 @@
   /* 모바일에서 비디오 최적화 */
   .background-video {
     will-change: transform !important;
+  }
+  .background-video::-webkit-media-controls {
+    display: none !important; /* iOS 등에서 비디오 컨트롤 숨기기 */
   }
   
   /* 모바일에서 이미지 최적화 */
@@ -356,42 +353,53 @@
     flex-direction: column !important;
     height: auto !important;
     margin-left: 0 !important;
-    margin-top: 60px !important;
-    padding: 0 16px !important;
-  }
-  
-  .look-thumbnails {
-    width: 100% !important;
-    min-width: auto !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    padding: 16px 0 !important;
-    margin: 0 !important;
-    height: auto !important;
-    overflow-x: auto !important;
-  }
-  
-  .look-thumbnails img {
-    width: 60px !important;
-    height: 80px !important;
-    flex-shrink: 0 !important;
+    padding: 0 !important;
+    margin-top: 150px !important; /* 헤더와 겹치지 않도록 여유 공간 충분히 확보 */
   }
   
   #lookGallery {
     width: 100% !important;
     max-width: 100% !important;
-    height: auto !important;
+    height: 80vh !important;      /* 갤러리 높이를 뷰포트의 80%로 고정 */
+    overflow: hidden !important;   /* 넘치는 이미지는 숨김 */
     margin: 0 !important;
-    padding: 16px 0 !important;
+    padding: 0 !important;
+    display: flex;                 /* 내부 이미지를 정렬하기 위해 flex 사용 */
+    align-items: center;           /* 이미지를 세로 중앙에 배치 */
   }
   
   #lookGallery img {
     width: 100% !important;
     height: auto !important;
-    max-height: 70vh !important;
+    max-height: 100% !important;   /* 갤러리 높이에 맞춤 */
     object-fit: contain !important;
-    margin-bottom: 16px !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0;                /* 이미지가 줄어들지 않도록 설정 */
+  }
+  
+  .look-thumbnails {
+    position: fixed !important;
+    top: 150px !important; /* 헤더 높이를 고려한 위치 */
+    left: 20px !important;
+    width: auto !important;
+    min-width: auto !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    max-height: calc(100vh - 170px) !important;
+    z-index: 1002 !important; /* 헤더(1001)보다 높게 설정해 클릭 가능하도록 함 */
+  }
+  
+  .look-thumbnails img {
+    width: 50px !important;
+    height: 67px !important;
+    flex-shrink: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
   }
   
   .look-desc {
@@ -523,13 +531,15 @@
     padding: clamp(4px, 1vw, 12px) 0 !important;
     gap: clamp(1px, 0.3vw, 2px) !important;
     /* 4x3 그리드 이미지 크기 줄여서 헤더 오버랩 방지 */
-    height: calc(100vh - 180px) !important;
-    margin-top: 20px !important;
-    /* 모바일에서 스크롤 스냅 제거 */
-    scroll-snap-align: none !important;
+    height: 100vh !important;
+    margin-top: 0 !important;
   }
   .look-box {
     padding: clamp(1px, 0.3vw, 2px) !important;
+  }
+  .look-box img {
+    height: 100% !important;
+    object-fit: cover !important;
   }
   .campaign-row {
     flex-direction: row !important;
@@ -537,8 +547,6 @@
     align-items: center !important;
     width: 100vw !important;
     height: 100vh !important;
-    /* 모바일에서 스크롤 스냅 제거 */
-    scroll-snap-align: none !important;
   }
   .campaign-box {
     padding: clamp(8px, 1.5vw, 16px) clamp(4px, 1vw, 8px) !important;
@@ -656,7 +664,6 @@
 
 .look17-campaign-section {
   margin-top: 0 !important;
-  scroll-snap-align: none !important; /* 스크롤 스냅 비활성화 */
 }
 
 /* contact.html 모바일 레이아웃 */
@@ -719,5 +726,36 @@
   .story-section:nth-child(6) .story-text,
   .story-section:nth-child(7) .story-text {
     color: #000 !important;
+  }
+}
+
+/*
+==============================================
+PAGE-SPECIFIC OVERRIDES: 25.2.html
+==============================================
+*/
+@media (max-width: 1179px) {
+
+  /* 데스크톱 전용 섹션은 모바일에서 완전히 숨기고 스냅 계산에서 제외 */
+  .desktop-only {
+    display: none !important;
+    visibility: hidden !important;
+    scroll-snap-align: none !important;
+  }
+
+  /*
+    모바일 그리드 섹션의 자식인 .collection-row에만
+    헤더 공간을 확보하기 위한 padding을 적용합니다.
+    margin 대신 padding과 box-sizing을 사용해 유령 스냅 지점을 없앱니다.
+  */
+  .mobile-grid-section > .collection-row {
+    padding-top: 120px !important; /* 헤더를 위한 공간 */
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 다른 모든 collection-row의 불필요한 상단 마진 제거 */
+  .collection-row {
+    margin-top: 0 !important;
   }
 } 

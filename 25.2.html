@@ -48,10 +48,21 @@
     @media (max-width: 1179px) {
       .mobile-grid-section {
         margin-top: 160px !important;
+        height: 100vh !important;
+        scroll-snap-align: start !important;
       }
       
       .look17-campaign-section .campaign-row {
         margin-top: 0 !important;
+      }
+      
+      .look17-campaign-section {
+        scroll-snap-align: start !important;
+      }
+      
+      /* 모바일에서 숨겨진 데스크톱 섹션들의 스크롤 스냅 비활성화 */
+      .desktop-only {
+        scroll-snap-align: none !important;
       }
     }
     .full-image {
@@ -75,7 +86,6 @@
       margin: 0;
       padding: 60px 0;
       background: #f6f6f6;
-      scroll-snap-align: start;
     }
     .look-box {
       width: 100%;
@@ -224,16 +234,12 @@
       .mobile-grid-section .collection-row {
         grid-template-columns: repeat(4, 1fr) !important;
         grid-template-rows: repeat(3, 1fr) !important;
-        /* 모바일에서만 스크롤 스냅 제거 */
-        scroll-snap-align: none !important;
       }
       
       /* 2x1 섹션을 모바일에서 세로 레이아웃으로 변경 */
       .campaign-row {
         flex-direction: column !important;
         height: 100vh !important;
-        /* 모바일에서만 스크롤 스냅 제거 */
-        scroll-snap-align: none !important;
       }
       
       .campaign-box {
@@ -281,11 +287,9 @@
       
       /* 작은 모바일에서도 스크롤 스냅 제거 */
       .collection-row {
-        scroll-snap-align: none !important;
       }
       
       .campaign-row {
-        scroll-snap-align: none !important;
       }
     }
   </style>

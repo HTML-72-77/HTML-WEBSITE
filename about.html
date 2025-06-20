@@ -150,7 +150,7 @@
     }
     
     .story-section:nth-child(6) {
-      background: linear-gradient(to bottom, #cccccc, #e6e6e6);
+      background: linear-gradient(to bottom, #cccccc, #f6f6f6);
     }
     
     .story-section:nth-child(7) {
@@ -255,6 +255,32 @@
       pointer-events: none;
     }
     */
+    
+    @media (max-width: 1179px) {
+      .story-section:nth-child(7) .story-text {
+        text-align: center !important;
+        white-space: normal !important;
+      }
+      .designer-names {
+        display: inline-block !important;
+        white-space: nowrap !important;
+        overflow-x: auto !important;
+        max-width: 100vw !important;
+        text-align: center !important;
+        font-weight: 400 !important;
+        font-family: 'Helvetica Neue', Arial, sans-serif !important;
+      }
+      .story-section:nth-child(1) .quote-text {
+        font-family: 'Helvetica Neue', Arial, sans-serif !important;
+        font-weight: 500 !important;
+      }
+      .story-section:nth-child(2) .story-text {
+        color: #fff !important;
+      }
+      .story-section:nth-child(3) .story-text {
+        color: #f6f6f6 !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -324,7 +350,7 @@
     
     <section class="story-section">
       <div class="story-content">
-        <div class="story-text">Designed by<br>Hyungmin Marc Lee & Hirotaro Murayama</div>
+        <div class="story-text">Designed by<br><span class="designer-names">Hyungmin Marc Lee & Hirotaro Murayama</span></div>
         <div class="story-subtitle">The Crew</div>
       </div>
     </section>
