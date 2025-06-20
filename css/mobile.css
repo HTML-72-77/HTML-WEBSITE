@@ -1,4 +1,8 @@
 /* 모바일 전용 CSS - 자동 반응형 */
+.mobile-only {
+  display: flex !important;
+}
+
 /* 태블릿 및 작은 데스크톱 */
 @media (max-width: 1024px) {
   .menu-header {
